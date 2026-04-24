@@ -893,31 +893,36 @@
     <h2 class="section-title reveal">Contact me</h2>
     <hr class="section-divider">
 
-    <div class="contact-toggle reveal" id="contactToggle" style="text-align: center;">
-      <div style="cursor: pointer; display: inline-block;" onclick="toggleContactForm()">
-        <i class="fa-solid fa-envelope contact-icon"></i>
+    <div class="contact-wrapper reveal" id="contactWrapper">
+      <div class="contact-toggle" id="contactToggle">
+        <div style="cursor: pointer; display: inline-block;" onclick="toggleContactForm()">
+          <i class="fa-solid fa-envelope contact-icon"></i>
+        </div>
+        <div class="contact-socials">
+          <a href="https://orcid.org/0000-0001-6021-7402" aria-label="ORCiD"><i class="fa-brands fa-orcid"></i></a>
+          <a href="https://www.linkedin.com/in/sean-harrigan-8a281614a/" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+          <a href="https://github.com/seanharrigan" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+        </div>
       </div>
-      <div class="contact-socials">
-        <a href="https://orcid.org/0000-0001-6021-7402" aria-label="ORCiD"><i class="fa-brands fa-orcid"></i></a>
-        <a href="https://www.linkedin.com/in/sean-harrigan-8a281614a/" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
-        <a href="https://github.com/seanharrigan" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
-      </div>
-    </div>
 
-    <form class="contact-form reveal" id="contactForm" action="https://formspree.io/f/moqzwwnz" method="POST" style="display: none;">
-      <div style="text-align: right; margin-bottom: 8px;">
-        <button type="button" onclick="toggleContactForm()" style="background: none; border: none; color: var(--gray-light); font-size: 1.2rem; cursor: pointer; padding: 4px;"><i class="fa-solid fa-xmark"></i></button>
+      <div class="contact-form-wrap" id="contactFormWrap">
+        <form class="contact-form" id="contactForm" action="https://formspree.io/f/moqzwwnz" method="POST">
+          <div style="text-align: right; margin-bottom: 8px;">
+            <button type="button" onclick="toggleContactForm()" style="background: none; border: none; color: var(--gray-light); font-size: 1.2rem; cursor: pointer; padding: 4px;"><i class="fa-solid fa-xmark"></i></button>
+          </div>
+          <input type="text" name="Name" placeholder="Name" required>
+          <input type="email" name="E-mail" placeholder="Email" required pattern="[a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,}">
+          <input type="text" name="Subject" placeholder="Subject">
+          <textarea name="Message" placeholder="Message" required></textarea>
+          <button type="submit">Send</button>
+        </form>
       </div>
-      <input type="text" name="Name" placeholder="Name" required>
-      <input type="email" name="E-mail" placeholder="Email" required pattern="[a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,}">
-      <input type="text" name="Subject" placeholder="Subject">
-      <textarea name="Message" placeholder="Message" required></textarea>
-      <button type="submit">Send</button>
-    </form>
-    <div class="contact-success reveal" id="contactSuccess">
-      <i class="fa-solid fa-circle-check"></i>
-      <h3>Thanks for reaching out!</h3>
-      <p>I'll get back to you as soon as I can.</p>
+
+      <div class="contact-success" id="contactSuccess">
+        <i class="fa-solid fa-circle-check"></i>
+        <h3>Thanks for reaching out!</h3>
+        <p>I'll get back to you as soon as I can.</p>
+      </div>
     </div>
   </div>
 </section>
@@ -1086,30 +1091,16 @@ backToTop.addEventListener('click', () => {
 
 // Contact form toggle
 function toggleContactForm() {
-  const form = document.getElementById('contactForm');
   const toggle = document.getElementById('contactToggle');
-  if (form.style.display === 'none' || !form.style.display) {
-    toggle.style.opacity = '0';
-    toggle.style.transition = 'opacity 0.3s ease';
-    setTimeout(() => {
-      toggle.style.display = 'none';
-      form.style.display = 'block';
-      form.style.opacity = '0';
-      form.style.transition = 'opacity 0.4s ease';
-      requestAnimationFrame(() => { form.style.opacity = '1'; });
-    }, 300);
+  const formWrap = document.getElementById('contactFormWrap');
+  const isOpen = formWrap.classList.contains('open');
+
+  if (isOpen) {
+    formWrap.classList.remove('open');
+    toggle.classList.remove('hidden');
   } else {
-    form.style.opacity = '0';
-    form.style.transition = 'opacity 0.3s ease';
-    setTimeout(() => {
-      form.style.display = 'none';
-      toggle.style.display = 'block';
-      toggle.style.opacity = '0';
-      requestAnimationFrame(() => {
-        toggle.style.transition = 'opacity 0.4s ease';
-        toggle.style.opacity = '1';
-      });
-    }, 300);
+    toggle.classList.add('hidden');
+    formWrap.classList.add('open');
   }
 }
 
