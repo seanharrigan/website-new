@@ -1930,12 +1930,12 @@ img { max-width: 100%; height: auto; }
   .vol-tab-title {
     font-size: 1.05rem;
     margin-bottom: 2px;
-    color: var(--gray-dark);
+    color: var(--blue-dark);
   }
 
   .vol-tab-meta {
     font-size: 0.82rem;
-    color: var(--blue-dark);
+    color: var(--blue-primary);
     font-weight: 600;
     margin-bottom: 14px;
   }
