@@ -803,27 +803,35 @@
 
     <div class="volunteer-grid reveal">
       <div class="volunteer-card">
-        <h4>Oasis Community Health Foundation</h4>
-        <span class="volunteer-role">Project Lead, Chronic Disease Management | 2021 - Present</span>
-        <p>
-          OCHF is a non-profit foundation running a malaria control program in rural Nigeria and a new free rural health centre.
-          My role has been helping organise the health centre and setting up the chronic disease division by creating clinical
-          guidelines for providers and educational materials for patients.
-          <a href="https://ruralhealth.ca/">Learn more</a>.
-        </p>
-        <iframe src="https://www.youtube.com/embed/GkwjbGX1_r0" title="OCHF Video" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <div class="volunteer-card-media">
+          <iframe src="https://www.youtube.com/embed/GkwjbGX1_r0" title="OCHF Video" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+        <div class="volunteer-card-body">
+          <h4>Oasis Community Health Foundation</h4>
+          <span class="volunteer-role">Project Lead, Chronic Disease Management | 2021 - Present</span>
+          <p>
+            OCHF is a non-profit foundation running a malaria control program in rural Nigeria and a new free rural health centre.
+            My role has been helping organise the health centre and setting up the chronic disease division by creating clinical
+            guidelines for providers and educational materials for patients.
+            <a href="https://ruralhealth.ca/">Learn more</a>.
+          </p>
+        </div>
       </div>
 
       <div class="volunteer-card">
-        <h4>UBC Bhutan Mental Health Project</h4>
-        <span class="volunteer-role">Research Study Team Member | 2021 - Present</span>
-        <p>
-          The goal is to better understand youth mental health in Bhutan, in partnership with a Bhutanese medical school
-          and UBC's Department of Medicine. My role includes writing the research protocol, ethics applications, survey design,
-          and leading the analysis.
-          <a href="https://ubcbhutanhealth.wordpress.com/">Learn more</a>.
-        </p>
-        <img src="images/bhutan.png" alt="Bhutan project" style="width: 100%; aspect-ratio: 16/9; border-radius: 8px; object-fit: cover;">
+        <div class="volunteer-card-media">
+          <img src="images/bhutan.png" alt="Bhutan project">
+        </div>
+        <div class="volunteer-card-body">
+          <h4>UBC Bhutan Mental Health Project</h4>
+          <span class="volunteer-role">Research Study Team Member | 2021 - Present</span>
+          <p>
+            The goal is to better understand youth mental health in Bhutan, in partnership with a Bhutanese medical school
+            and UBC's Department of Medicine. My role includes writing the research protocol, ethics applications, survey design,
+            and leading the analysis.
+            <a href="https://ubcbhutanhealth.wordpress.com/">Learn more</a>.
+          </p>
+        </div>
       </div>
     </div>
   </div>
@@ -999,6 +1007,10 @@ window.addEventListener('scroll', () => {
     link.classList.remove('active');
     if (link.getAttribute('href') === '#' + current) {
       link.classList.add('active');
+      // Auto-scroll bottom nav on mobile to keep active item visible
+      if (window.innerWidth <= 768) {
+        link.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+      }
     }
   });
 });
