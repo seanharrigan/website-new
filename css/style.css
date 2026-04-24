@@ -901,9 +901,8 @@ img { max-width: 100%; height: auto; }
   box-shadow: var(--shadow);
 }
 
-.abstract-card:hover,
-.abstract-card.in-view {
-  transform: translateY(-3px) scale(1.03);
+.abstract-card:hover {
+  transform: translateY(-3px);
   box-shadow: var(--shadow-hover);
 }
 

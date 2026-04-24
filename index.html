@@ -467,7 +467,6 @@
           </div>
         </div>
       </div>
-      <div class="abstracts-dots" id="abstractsDots"></div>
     </div>
 
     <p style="text-align: center; padding-top: 2rem;">
@@ -1200,40 +1199,6 @@ function runSIR() {
 document.getElementById('r0Slider')?.addEventListener('input', runSIR);
 document.getElementById('gammaSlider')?.addEventListener('input', runSIR);
 document.querySelector('[data-tab="tab-epi"]')?.addEventListener('click', () => setTimeout(runSIR, 100));
-
-// Abstracts scroll dots
-(function() {
-  const scroll = document.querySelector('.abstracts-scroll');
-  const dotsC = document.getElementById('abstractsDots');
-  if (!scroll || !dotsC) return;
-  const cards = scroll.querySelectorAll('.abstract-card');
-
-  cards.forEach((_, i) => {
-    const dot = document.createElement('button');
-    dot.className = 'abstracts-dot' + (i === 0 ? ' active' : '');
-    dot.addEventListener('click', () => {
-      cards[i].scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
-    });
-    dotsC.appendChild(dot);
-  });
-
-  const dots = dotsC.querySelectorAll('.abstracts-dot');
-
-  function updateDots() {
-    const scrollCenter = scroll.scrollLeft + scroll.clientWidth / 2;
-    let closest = 0, minDist = Infinity;
-    cards.forEach((card, i) => {
-      const cardCenter = card.offsetLeft + card.offsetWidth / 2;
-      const dist = Math.abs(scrollCenter - cardCenter);
-      if (dist < minDist) { minDist = dist; closest = i; }
-    });
-    dots.forEach((d, i) => d.classList.toggle('active', i === closest));
-    cards.forEach((c, i) => c.classList.toggle('in-view', i === closest));
-  }
-
-  scroll.addEventListener('scroll', updateDots);
-  updateDots();
-})();
 
 // Education: tap to toggle on mobile, only one open at a time
 if (window.innerWidth <= 768) {
