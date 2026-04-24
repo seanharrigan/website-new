@@ -792,51 +792,61 @@
 
 <!-- ===== Volunteer ===== -->
 <section class="volunteer" id="volunteer">
-  <div class="volunteer-header">
-    <div class="container">
-      <h2 class="section-title reveal">Volunteer</h2>
-      <hr class="section-divider">
-      <p class="volunteer-intro reveal">
-        Volunteering has always been an important part of my life. I have been part of two global health projects
-        through UBC's Global Health Initiative, aimed at giving back to local communities and providing lasting impact through research.
-      </p>
-    </div>
-  </div>
-  <div class="volunteer-body">
-    <div class="container">
+  <div class="container">
+    <h2 class="section-title reveal">Volunteer</h2>
+    <hr class="section-divider">
+
+    <p class="volunteer-intro reveal">
+      Volunteering has always been an important part of my life. I have been part of two global health projects
+      through UBC's Global Health Initiative, aimed at giving back to local communities and providing lasting impact through research.
+    </p>
+
     <div class="volunteer-grid reveal">
-      <div class="volunteer-card">
-        <div class="volunteer-card-media">
-          <iframe src="https://www.youtube.com/embed/GkwjbGX1_r0" title="OCHF Video" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      <div class="volunteer-card expanded">
+        <div class="volunteer-card-header">
+          <div>
+            <h4>Oasis Community Health Foundation</h4>
+            <span class="volunteer-role">Project Lead, Chronic Disease Management | 2021 - Present</span>
+          </div>
+          <i class="fa-solid fa-chevron-down volunteer-toggle"></i>
         </div>
-        <div class="volunteer-card-body">
-          <h4>Oasis Community Health Foundation</h4>
-          <span class="volunteer-role">Project Lead, Chronic Disease Management | 2021 - Present</span>
-          <p>
-            OCHF is a non-profit foundation running a malaria control program in rural Nigeria and a new free rural health centre.
-            My role has been helping organise the health centre and setting up the chronic disease division by creating clinical
-            guidelines for providers and educational materials for patients.
-            <a href="https://ruralhealth.ca/">Learn more</a>.
-          </p>
+        <div class="volunteer-card-content">
+          <div class="volunteer-card-body">
+            <p>
+              OCHF is a non-profit foundation running a malaria control program in rural Nigeria and a new free rural health centre.
+              My role has been helping organise the health centre and setting up the chronic disease division by creating clinical
+              guidelines for providers and educational materials for patients.
+              <a href="https://ruralhealth.ca/">Learn more</a>.
+            </p>
+          </div>
+          <div class="volunteer-card-media">
+            <iframe src="https://www.youtube.com/embed/GkwjbGX1_r0" title="OCHF Video" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          </div>
         </div>
       </div>
 
       <div class="volunteer-card">
-        <div class="volunteer-card-media">
-          <img src="images/bhutan.png" alt="Bhutan project">
+        <div class="volunteer-card-header">
+          <div>
+            <h4>UBC Bhutan Mental Health Project</h4>
+            <span class="volunteer-role">Research Study Team Member | 2021 - Present</span>
+          </div>
+          <i class="fa-solid fa-chevron-down volunteer-toggle"></i>
         </div>
-        <div class="volunteer-card-body">
-          <h4>UBC Bhutan Mental Health Project</h4>
-          <span class="volunteer-role">Research Study Team Member | 2021 - Present</span>
-          <p>
-            The goal is to better understand youth mental health in Bhutan, in partnership with a Bhutanese medical school
-            and UBC's Department of Medicine. My role includes writing the research protocol, ethics applications, survey design,
-            and leading the analysis.
-            <a href="https://ubcbhutanhealth.wordpress.com/">Learn more</a>.
-          </p>
+        <div class="volunteer-card-content">
+          <div class="volunteer-card-body">
+            <p>
+              The goal is to better understand youth mental health in Bhutan, in partnership with a Bhutanese medical school
+              and UBC's Department of Medicine. My role includes writing the research protocol, ethics applications, survey design,
+              and leading the analysis.
+              <a href="https://ubcbhutanhealth.wordpress.com/">Learn more</a>.
+            </p>
+          </div>
+          <div class="volunteer-card-media">
+            <img src="images/bhutan.png" alt="Bhutan project">
+          </div>
         </div>
       </div>
-    </div>
     </div>
   </div>
 </section>
@@ -927,10 +937,12 @@ particlesJS("particles-js", {
   retina_detect: true
 });
 
-// Navbar scroll effect
+// Navbar scroll effect - hidden until past hero
 const navbar = document.getElementById('navbar');
+const heroSection = document.querySelector('.hero');
 window.addEventListener('scroll', () => {
-  navbar.classList.toggle('scrolled', window.scrollY > 50);
+  const pastHero = window.scrollY > (heroSection ? heroSection.offsetHeight - 100 : 300);
+  navbar.classList.toggle('scrolled', pastHero);
 });
 
 // Mobile menu
@@ -1155,6 +1167,14 @@ function runSIR() {
 document.getElementById('r0Slider')?.addEventListener('input', runSIR);
 document.getElementById('gammaSlider')?.addEventListener('input', runSIR);
 document.querySelector('[data-tab="tab-epi"]')?.addEventListener('click', () => setTimeout(runSIR, 100));
+
+// Volunteer expand/collapse
+document.querySelectorAll('.volunteer-card').forEach(card => {
+  card.addEventListener('click', (e) => {
+    if (e.target.tagName === 'A' || e.target.tagName === 'IFRAME') return;
+    card.classList.toggle('expanded');
+  });
+});
 
 // === Awards Carousel ===
 (function() {

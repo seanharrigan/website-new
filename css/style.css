@@ -105,11 +105,15 @@ img { max-width: 100%; height: auto; }
   display: flex;
   align-items: center;
   justify-content: space-between;
-  transition: all var(--transition);
+  transition: all 0.4s ease;
   background: transparent;
+  transform: translateY(-100%);
+  opacity: 0;
 }
 
 .navbar.scrolled {
+  transform: translateY(0);
+  opacity: 1;
   background: rgba(255,255,255,0.92);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
@@ -1255,31 +1259,8 @@ img { max-width: 100%; height: auto; }
 
 /* ===== Volunteer ===== */
 .volunteer {
-  padding: 0;
-  background: #f5f7f8;
-}
-
-.volunteer-header {
-  background: linear-gradient(135deg, var(--blue-primary), var(--blue-dark));
-  padding: 60px 0 40px;
-  text-align: center;
-}
-
-.volunteer-header .section-title {
-  color: var(--white);
-}
-
-.volunteer-header .section-divider {
-  background: rgba(255,255,255,0.4);
-}
-
-.volunteer-header .volunteer-intro {
-  color: rgba(255,255,255,0.85);
-  margin-bottom: 0;
-}
-
-.volunteer-body {
-  padding: 40px 0 80px;
+  padding: var(--section-padding);
+  background: var(--white);
 }
 
 .volunteer-intro {
@@ -1298,29 +1279,80 @@ img { max-width: 100%; height: auto; }
 }
 
 .volunteer-card {
-  background: var(--white);
+  background: var(--blue-light);
   border-radius: var(--radius);
   overflow: hidden;
-  transition: all var(--transition);
-  display: flex;
-  flex-direction: column;
+  transition: all 0.4s ease;
   box-shadow: var(--shadow);
+  cursor: pointer;
 }
 
 .volunteer-card:hover {
-  transform: translateY(-4px);
   box-shadow: var(--shadow-hover);
 }
 
-.volunteer-card-media {
-  position: relative;
+.volunteer-card-header {
+  padding: 20px 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.volunteer-card-header h4 {
+  font-size: 1.05rem;
+  margin: 0;
+}
+
+.volunteer-role {
+  font-size: 0.8rem;
+  color: var(--blue-dark);
+  font-weight: 600;
+  display: block;
+  margin-top: 4px;
+}
+
+.volunteer-toggle {
+  font-size: 1.2rem;
+  color: var(--gray-light);
+  transition: transform 0.3s ease;
+  flex-shrink: 0;
+}
+
+.volunteer-card.expanded .volunteer-toggle {
+  transform: rotate(180deg);
+}
+
+.volunteer-card-content {
+  max-height: 0;
   overflow: hidden;
+  transition: max-height 0.6s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.4s ease;
+  opacity: 0;
+}
+
+.volunteer-card.expanded .volunteer-card-content {
+  max-height: 600px;
+  opacity: 1;
+}
+
+.volunteer-card-body {
+  padding: 0 24px 24px;
+}
+
+.volunteer-card-body p {
+  font-size: 0.9rem;
+  color: var(--gray-mid);
+  text-align: justify;
+}
+
+.volunteer-card-media {
+  padding: 0 24px 24px;
 }
 
 .volunteer-card-media iframe {
   width: 100%;
   aspect-ratio: 16/9;
   border: none;
+  border-radius: 8px;
   display: block;
 }
 
@@ -1328,39 +1360,8 @@ img { max-width: 100%; height: auto; }
   width: 100%;
   aspect-ratio: 16/9;
   object-fit: cover;
+  border-radius: 8px;
   display: block;
-  transition: transform 0.5s ease;
-}
-
-.volunteer-card:hover .volunteer-card-media img {
-  transform: scale(1.03);
-}
-
-.volunteer-card-body {
-  padding: 24px;
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-}
-
-.volunteer-card-body h4 { font-size: 1.1rem; margin-bottom: 4px; }
-
-.volunteer-role {
-  font-size: 0.82rem;
-  color: var(--blue-dark);
-  font-weight: 600;
-  margin-bottom: 12px;
-  display: inline-block;
-  background: var(--blue-light);
-  padding: 4px 12px;
-  border-radius: 20px;
-}
-
-.volunteer-card-body p {
-  font-size: 0.9rem;
-  color: var(--gray-mid);
-  text-align: justify;
-  flex: 1;
 }
 
 /* ===== Contact ===== */
@@ -1705,10 +1706,11 @@ img { max-width: 100%; height: auto; }
   .nav-links a::after { display: none; }
 
   .nav-links a.active {
-    background: var(--tan);
-    color: var(--white) !important;
-    border-radius: 20px;
+    color: var(--tan) !important;
     opacity: 1 !important;
+    border-bottom: 2px solid var(--tan);
+    transform: translateY(-1px);
+    padding-bottom: 4px;
   }
 
   /* Hide top navbar brand on mobile since nav is at bottom */
