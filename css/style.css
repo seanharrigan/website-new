@@ -1843,6 +1843,17 @@ img { max-width: 100%; height: auto; }
   .timeline-header { flex-direction: row; }
   .timeline-summary { white-space: normal; }
 
+  .timeline-header-text h4 { font-size: 0.95rem; }
+  .tl-company {
+    display: block;
+    color: #777;
+    font-weight: 500;
+    font-size: 0.85rem;
+    margin-top: 1px;
+  }
+  .timeline-body { font-size: 0.85rem; }
+  .timeline-body li { font-size: 0.82rem; }
+
   /* Education: vertical on mobile */
   .edu-items::before {
     top: 0;
