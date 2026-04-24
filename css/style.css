@@ -1673,7 +1673,7 @@ img { max-width: 100%; height: auto; }
     top: 0;
     left: 0;
     right: 0;
-    height: calc(60px + env(safe-area-inset-top, 0px));
+    height: calc(48px + env(safe-area-inset-top, 0px));
     background: white;
     z-index: 999;
     pointer-events: none;
@@ -1714,17 +1714,17 @@ img { max-width: 100%; height: auto; }
     height: auto;
     background: white;
     flex-direction: row;
-    padding: 10px 16px;
-    padding-top: calc(10px + env(safe-area-inset-top, 0px));
+    padding: 8px 16px;
+    padding-top: calc(4px + env(safe-area-inset-top, 0px));
     gap: 0;
-    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    box-shadow: none;
     z-index: 1000;
     overflow-x: auto;
     overflow-y: hidden;
     -webkit-overflow-scrolling: touch;
     scroll-snap-type: x mandatory;
     transform: translateY(-150%);
-    transition: transform 0.4s ease;
+    transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
   .nav-links.scrolled-visible {
