@@ -39,6 +39,9 @@
 </head>
 <body>
 
+<!-- Mobile notch cover -->
+<div class="mobile-nav-bg" id="mobileNavBg"></div>
+
 <!-- ===== Navbar ===== -->
 <nav class="navbar" id="navbar">
   <ul class="nav-links" id="navLinks">
@@ -1073,10 +1076,12 @@ window.addEventListener('scroll', () => {
 
 // 3. Back to top + mobile nav visibility
 const backToTop = document.getElementById('backToTop');
+const mobileNavBg = document.getElementById('mobileNavBg');
 window.addEventListener('scroll', () => {
   const scrolled = window.scrollY > 300;
   backToTop.classList.toggle('visible', scrolled);
   navLinks.classList.toggle('scrolled-visible', scrolled);
+  mobileNavBg?.classList.toggle('visible', scrolled);
 });
 backToTop.addEventListener('click', () => {
   window.scrollTo({ top: 0, behavior: 'smooth' });

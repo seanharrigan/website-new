@@ -94,6 +94,9 @@ img { max-width: 100%; height: auto; }
   transform: translateY(0);
 }
 
+/* Mobile notch cover - hidden on desktop */
+.mobile-nav-bg { display: none; }
+
 /* ===== Navbar ===== */
 .navbar {
   position: fixed;
@@ -1662,6 +1665,25 @@ img { max-width: 100%; height: auto; }
 /* ===== Responsive ===== */
 @media (max-width: 768px) {
   :root { --section-padding: 60px 0; }
+
+  /* White shield behind notch */
+  .mobile-nav-bg {
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: calc(60px + env(safe-area-inset-top, 0px));
+    background: white;
+    z-index: 999;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+  }
+
+  .mobile-nav-bg.visible {
+    opacity: 1;
+  }
 
   /* Hide top navbar bar but keep it in DOM so nav-links can escape */
   .navbar {
