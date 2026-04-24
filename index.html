@@ -894,15 +894,8 @@
     <hr class="section-divider">
 
     <div class="contact-wrapper reveal" id="contactWrapper">
-      <div class="contact-toggle" id="contactToggle">
-        <div style="cursor: pointer; display: inline-block;" onclick="toggleContactForm()">
-          <i class="fa-solid fa-envelope contact-icon"></i>
-        </div>
-        <div class="contact-socials">
-          <a href="https://orcid.org/0000-0001-6021-7402" aria-label="ORCiD"><i class="fa-brands fa-orcid"></i></a>
-          <a href="https://www.linkedin.com/in/sean-harrigan-8a281614a/" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
-          <a href="https://github.com/seanharrigan" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
-        </div>
+      <div style="text-align: center; cursor: pointer; display: inline-block;" onclick="toggleContactForm()" id="contactMailBtn">
+        <i class="fa-solid fa-envelope contact-icon"></i>
       </div>
 
       <div class="contact-form-wrap" id="contactFormWrap">
@@ -922,6 +915,12 @@
         <i class="fa-solid fa-circle-check"></i>
         <h3>Thanks for reaching out!</h3>
         <p>I'll get back to you as soon as I can.</p>
+      </div>
+
+      <div class="contact-socials">
+        <a href="https://orcid.org/0000-0001-6021-7402" aria-label="ORCiD"><i class="fa-brands fa-orcid"></i></a>
+        <a href="https://www.linkedin.com/in/sean-harrigan-8a281614a/" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+        <a href="https://github.com/seanharrigan" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
       </div>
     </div>
   </div>
@@ -1091,16 +1090,19 @@ backToTop.addEventListener('click', () => {
 
 // Contact form toggle
 function toggleContactForm() {
-  const toggle = document.getElementById('contactToggle');
+  const wrapper = document.getElementById('contactWrapper');
   const formWrap = document.getElementById('contactFormWrap');
   const isOpen = formWrap.classList.contains('open');
 
   if (isOpen) {
     formWrap.classList.remove('open');
-    toggle.classList.remove('hidden');
+    wrapper.classList.remove('form-open');
   } else {
-    toggle.classList.add('hidden');
     formWrap.classList.add('open');
+    wrapper.classList.add('form-open');
+    setTimeout(() => {
+      document.getElementById('contact').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }, 100);
   }
 }
 
