@@ -1015,10 +1015,12 @@ window.addEventListener('scroll', () => {
   });
 });
 
-// 3. Back to top
+// 3. Back to top + mobile nav visibility
 const backToTop = document.getElementById('backToTop');
 window.addEventListener('scroll', () => {
-  backToTop.classList.toggle('visible', window.scrollY > 500);
+  const scrolled = window.scrollY > 300;
+  backToTop.classList.toggle('visible', scrolled);
+  navLinks.classList.toggle('scrolled-visible', scrolled);
 });
 backToTop.addEventListener('click', () => {
   window.scrollTo({ top: 0, behavior: 'smooth' });

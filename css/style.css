@@ -1656,6 +1656,12 @@ img { max-width: 100%; height: auto; }
     overflow-y: hidden;
     -webkit-overflow-scrolling: touch;
     scroll-snap-type: x mandatory;
+    transform: translateY(100%);
+    transition: transform 0.4s ease;
+  }
+
+  .nav-links.scrolled-visible {
+    transform: translateY(0);
   }
 
   .nav-links::-webkit-scrollbar { display: none; }
