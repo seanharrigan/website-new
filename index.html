@@ -851,6 +851,34 @@
         </div>
       </div>
     </div>
+
+    <!-- Mobile only: tabbed panels -->
+    <div class="volunteer-tabs-mobile">
+      <div class="vol-tab-nav">
+        <button class="vol-tab-btn active" data-vol="vol-nigeria">Nigeria</button>
+        <button class="vol-tab-btn" data-vol="vol-bhutan">Bhutan</button>
+      </div>
+      <div class="vol-tab-panel active" id="vol-nigeria">
+        <span class="vol-tab-role">Project Lead, Chronic Disease Management | 2021 - Present</span>
+        <p>
+          OCHF is a non-profit foundation running a malaria control program in rural Nigeria and a new free rural health centre.
+          My role has been helping organise the health centre and setting up the chronic disease division by creating clinical
+          guidelines for providers and educational materials for patients.
+          <a href="https://ruralhealth.ca/">Learn more</a>.
+        </p>
+        <iframe src="https://www.youtube.com/embed/GkwjbGX1_r0" title="OCHF Video" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+      <div class="vol-tab-panel" id="vol-bhutan">
+        <span class="vol-tab-role">Research Study Team Member | 2021 - Present</span>
+        <p>
+          The goal is to better understand youth mental health in Bhutan, in partnership with a Bhutanese medical school
+          and UBC's Department of Medicine. My role includes writing the research protocol, ethics applications, survey design,
+          and leading the analysis.
+          <a href="https://ubcbhutanhealth.wordpress.com/">Learn more</a>.
+        </p>
+        <img src="images/bhutan.png" alt="Bhutan project">
+      </div>
+    </div>
   </div>
 </section>
 
@@ -1189,22 +1217,51 @@ document.querySelector('[data-tab="tab-epi"]')?.addEventListener('click', () => 
 
   const dots = dotsC.querySelectorAll('.abstracts-dot');
   const obs = new IntersectionObserver((entries) => {
+    let maxRatio = 0, maxIdx = 0;
     entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        const idx = Array.from(cards).indexOf(entry.target);
-        dots.forEach((d, i) => d.classList.toggle('active', i === idx));
+      const idx = Array.from(cards).indexOf(entry.target);
+      if (entry.intersectionRatio > maxRatio) {
+        maxRatio = entry.intersectionRatio;
+        maxIdx = idx;
       }
     });
-  }, { root: scroll, threshold: 0.6 });
+    if (maxRatio > 0.3) {
+      dots.forEach((d, i) => d.classList.toggle('active', i === maxIdx));
+    }
+  }, { root: scroll, threshold: [0, 0.3, 0.5, 0.7, 1] });
 
   cards.forEach(c => obs.observe(c));
 })();
 
-// Volunteer expand/collapse
+// Education: tap to toggle on mobile, only one open at a time
+if (window.innerWidth <= 768) {
+  const eduItems = document.querySelectorAll('.edu-item');
+  // Set most recent (last in DOM = first visually when reversed) as active
+  if (eduItems.length) eduItems[eduItems.length - 1].classList.add('edu-active');
+
+  eduItems.forEach(item => {
+    item.addEventListener('click', () => {
+      eduItems.forEach(i => i.classList.remove('edu-active'));
+      item.classList.add('edu-active');
+    });
+  });
+}
+
+// Volunteer expand/collapse (desktop)
 document.querySelectorAll('.volunteer-card').forEach(card => {
   card.addEventListener('click', (e) => {
     if (e.target.tagName === 'A' || e.target.tagName === 'IFRAME') return;
     card.classList.toggle('expanded');
+  });
+});
+
+// Volunteer tabs (mobile)
+document.querySelectorAll('.vol-tab-btn').forEach(btn => {
+  btn.addEventListener('click', function() {
+    document.querySelectorAll('.vol-tab-btn').forEach(b => b.classList.remove('active'));
+    document.querySelectorAll('.vol-tab-panel').forEach(p => p.classList.remove('active'));
+    this.classList.add('active');
+    document.getElementById(this.dataset.vol).classList.add('active');
   });
 });
 
