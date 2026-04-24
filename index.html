@@ -893,15 +893,15 @@
     <h2 class="section-title reveal">Contact me</h2>
     <hr class="section-divider">
 
-    <div class="contact-toggle reveal" id="contactToggle" style="text-align: center; cursor: pointer;" onclick="toggleContactForm()">
-      <i class="fa-solid fa-envelope" style="font-size: 2.5rem; color: var(--tan); transition: all 0.3s ease; display: inline-block;"></i>
-      <p style="font-size: 0.85rem; color: var(--gray-mid); margin-top: 8px;">Tap to send a message</p>
-    </div>
-
-    <div style="display: flex; gap: 24px; justify-content: center; margin-top: 2rem;" class="reveal">
-      <a href="https://orcid.org/0000-0001-6021-7402" aria-label="ORCiD" style="color: var(--tan); font-size: 1.5rem; transition: all 0.3s ease;"><i class="fa-brands fa-orcid"></i></a>
-      <a href="https://www.linkedin.com/in/sean-harrigan-8a281614a/" aria-label="LinkedIn" style="color: var(--tan); font-size: 1.5rem; transition: all 0.3s ease;"><i class="fa-brands fa-linkedin"></i></a>
-      <a href="https://github.com/seanharrigan" aria-label="GitHub" style="color: var(--tan); font-size: 1.5rem; transition: all 0.3s ease;"><i class="fa-brands fa-github"></i></a>
+    <div class="contact-toggle reveal" id="contactToggle" style="text-align: center;">
+      <div style="cursor: pointer; display: inline-block;" onclick="toggleContactForm()">
+        <i class="fa-solid fa-envelope contact-icon"></i>
+      </div>
+      <div class="contact-socials">
+        <a href="https://orcid.org/0000-0001-6021-7402" aria-label="ORCiD"><i class="fa-brands fa-orcid"></i></a>
+        <a href="https://www.linkedin.com/in/sean-harrigan-8a281614a/" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+        <a href="https://github.com/seanharrigan" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+      </div>
     </div>
 
     <form class="contact-form reveal" id="contactForm" action="https://formspree.io/f/moqzwwnz" method="POST" style="display: none;">
