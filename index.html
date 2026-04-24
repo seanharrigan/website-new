@@ -495,7 +495,8 @@
         <button class="tab-btn active" data-tab="tab-vis"><i class="fa-solid fa-chart-pie"></i> Data Vis</button>
         <button class="tab-btn" data-tab="tab-dash"><i class="fa-solid fa-chart-line"></i> Dashboard</button>
         <button class="tab-btn" data-tab="tab-report"><i class="fa-solid fa-pencil"></i> Reporting</button>
-        <button class="tab-btn" data-tab="tab-epi"><i class="fa-solid fa-virus"></i> Epi Simulation</button>
+        <button class="tab-btn" data-tab="tab-epi"><i class="fa-solid fa-virus"></i> SIR Model</button>
+        <button class="tab-btn" data-tab="tab-contagion"><i class="fa-solid fa-shield-virus"></i> Contagion Sim</button>
         <button class="tab-btn" data-tab="tab-langs"><i class="fa-solid fa-code"></i> Languages</button>
       </div>
 
@@ -573,6 +574,48 @@
           <canvas id="sirChart" height="300"></canvas>
           <p style="font-size: 0.78rem; color: var(--gray-light); text-align: center; margin-top: 12px;">
             Population: 10,000 | Initial infected: 10 | Duration: 200 days
+          </p>
+        </div>
+      </div>
+
+      <!-- Contagion Simulation -->
+      <div class="tab-content" id="tab-contagion">
+        <p class="tab-typing">&gt; simulate_spread()</p>
+        <p class="tab-text">
+          Watch a disease spread through a population in real time. Each dot is a person —
+          <span style="color:#93BFCF;font-weight:600;">healthy</span>,
+          <span style="color:#c4532e;font-weight:600;">infected</span>, or
+          <span style="color:#A17A5A;font-weight:600;">recovered</span>.
+          Use the controls to add interventions and see how vaccination rate and mask usage reduce transmission.
+        </p>
+        <div style="max-width: 700px; margin: 0 auto;">
+          <div style="display: flex; gap: 24px; flex-wrap: wrap; margin-bottom: 16px;">
+            <div style="flex: 1; min-width: 180px;">
+              <label style="font-size: 0.85rem; font-weight: 600; color: var(--gray-dark); display: block; margin-bottom: 6px;">
+                <i class="fa-solid fa-syringe" style="color: var(--blue-dark);"></i> Vaccination Rate: <span id="vaxValue" style="color: var(--blue-dark);">0%</span>
+              </label>
+              <input type="range" id="vaxSlider" min="0" max="80" step="5" value="0" style="width: 100%; accent-color: var(--blue-primary);">
+            </div>
+            <div style="flex: 1; min-width: 180px;">
+              <label style="font-size: 0.85rem; font-weight: 600; color: var(--gray-dark); display: block; margin-bottom: 6px;">
+                <i class="fa-solid fa-mask-face" style="color: var(--blue-dark);"></i> Mask Usage: <span id="maskValue" style="color: var(--blue-dark);">0%</span>
+              </label>
+              <input type="range" id="maskSlider" min="0" max="100" step="5" value="0" style="width: 100%; accent-color: var(--blue-primary);">
+            </div>
+          </div>
+          <div style="display: flex; gap: 12px; margin-bottom: 12px; justify-content: center;">
+            <button id="contagionStart" class="btn btn-primary-custom" style="padding: 8px 24px; font-size: 0.85rem;"><i class="fa-solid fa-play"></i> Start</button>
+            <button id="contagionReset" class="btn btn-secondary-custom" style="padding: 8px 24px; font-size: 0.85rem;"><i class="fa-solid fa-rotate-right"></i> Reset</button>
+          </div>
+          <div style="display: flex; gap: 20px; justify-content: center; margin-bottom: 10px; font-size: 0.8rem;">
+            <span><span style="display:inline-block;width:10px;height:10px;background:#93BFCF;border-radius:50%;margin-right:4px;vertical-align:middle;"></span> Healthy: <strong id="countHealthy">0</strong></span>
+            <span><span style="display:inline-block;width:10px;height:10px;background:#c4532e;border-radius:50%;margin-right:4px;vertical-align:middle;"></span> Infected: <strong id="countInfected">0</strong></span>
+            <span><span style="display:inline-block;width:10px;height:10px;background:#A17A5A;border-radius:50%;margin-right:4px;vertical-align:middle;"></span> Recovered: <strong id="countRecovered">0</strong></span>
+            <span><span style="display:inline-block;width:10px;height:10px;background:#6bbf59;border-radius:50%;margin-right:4px;vertical-align:middle;"></span> Vaccinated: <strong id="countVaccinated">0</strong></span>
+          </div>
+          <canvas id="contagionCanvas" style="width: 100%; border-radius: 12px; background: #f8f9fa; border: 1px solid #e8e8e8;"></canvas>
+          <p style="font-size: 0.78rem; color: var(--gray-light); text-align: center; margin-top: 10px;">
+            200 individuals | Infection radius: proximity-based | Masks reduce transmission by 50%
           </p>
         </div>
       </div>
@@ -951,45 +994,49 @@ document.querySelectorAll('.tab-btn').forEach(btn => {
   });
 });
 
-// SIR Model Simulation
+// === SIR Model (smooth update) ===
 let sirChart = null;
 
-function runSIR() {
+function computeSIR() {
   const R0 = parseFloat(document.getElementById('r0Slider').value);
   const gamma = parseFloat(document.getElementById('gammaSlider').value);
   const beta = R0 * gamma;
-  const N = 10000;
-  const days = 200;
-  const dt = 0.1;
-
+  const N = 10000, days = 200, dt = 0.1;
   let S = N - 10, I = 10, R = 0;
   const sData = [], iData = [], rData = [], labels = [];
-
   for (let t = 0; t <= days; t += dt) {
     if (Math.abs(t - Math.round(t)) < dt / 2) {
       labels.push(Math.round(t));
-      sData.push(S);
-      iData.push(I);
-      rData.push(R);
+      sData.push(S); iData.push(I); rData.push(R);
     }
     const dS = -beta * S * I / N * dt;
     const dI = (beta * S * I / N - gamma * I) * dt;
     const dR = gamma * I * dt;
     S += dS; I += dI; R += dR;
   }
+  return { labels, sData, iData, rData };
+}
 
-  document.getElementById('r0Value').textContent = R0.toFixed(1);
-  document.getElementById('gammaValue').textContent = gamma.toFixed(2);
-
+function runSIR() {
+  const { labels, sData, iData, rData } = computeSIR();
+  document.getElementById('r0Value').textContent = parseFloat(document.getElementById('r0Slider').value).toFixed(1);
+  document.getElementById('gammaValue').textContent = parseFloat(document.getElementById('gammaSlider').value).toFixed(2);
   const ctx = document.getElementById('sirChart');
   if (!ctx) return;
 
-  if (sirChart) sirChart.destroy();
+  if (sirChart) {
+    sirChart.data.labels = labels;
+    sirChart.data.datasets[0].data = sData;
+    sirChart.data.datasets[1].data = iData;
+    sirChart.data.datasets[2].data = rData;
+    sirChart.update('none');
+    return;
+  }
 
   sirChart = new Chart(ctx, {
     type: 'line',
     data: {
-      labels: labels,
+      labels,
       datasets: [
         { label: 'Susceptible', data: sData, borderColor: '#93BFCF', backgroundColor: 'rgba(147,191,207,0.1)', fill: true, pointRadius: 0, borderWidth: 2, tension: 0.4 },
         { label: 'Infected', data: iData, borderColor: '#c4532e', backgroundColor: 'rgba(196,83,46,0.1)', fill: true, pointRadius: 0, borderWidth: 2, tension: 0.4 },
@@ -998,9 +1045,9 @@ function runSIR() {
     },
     options: {
       responsive: true,
-      animation: { duration: 400 },
+      animation: { duration: 600, easing: 'easeOutQuart' },
       interaction: { mode: 'index', intersect: false },
-      plugins: { legend: { display: false }, tooltip: { callbacks: { label: ctx => ctx.dataset.label + ': ' + Math.round(ctx.parsed.y).toLocaleString() } } },
+      plugins: { legend: { display: false }, tooltip: { callbacks: { label: c => c.dataset.label + ': ' + Math.round(c.parsed.y).toLocaleString() } } },
       scales: {
         x: { title: { display: true, text: 'Days', font: { size: 12 } }, grid: { display: false }, ticks: { maxTicksLimit: 10 } },
         y: { title: { display: true, text: 'Population', font: { size: 12 } }, grid: { color: '#f0f0f0' }, ticks: { callback: v => v.toLocaleString() } }
@@ -1011,11 +1058,146 @@ function runSIR() {
 
 document.getElementById('r0Slider')?.addEventListener('input', runSIR);
 document.getElementById('gammaSlider')?.addEventListener('input', runSIR);
+document.querySelector('[data-tab="tab-epi"]')?.addEventListener('click', () => setTimeout(runSIR, 100));
 
-// Run on tab click
-document.querySelector('[data-tab="tab-epi"]')?.addEventListener('click', () => {
-  setTimeout(runSIR, 100);
-});
+// === Contagion Simulation ===
+(function() {
+  const canvas = document.getElementById('contagionCanvas');
+  if (!canvas) return;
+  const c = canvas.getContext('2d');
+  const POP = 200, RADIUS = 4, INFECT_DIST = 14, INFECT_PROB = 0.03, RECOVER_TIME = 300;
+  let people = [], animId = null, running = false;
+
+  function resize() {
+    const rect = canvas.parentElement.getBoundingClientRect();
+    canvas.width = rect.width;
+    canvas.height = Math.min(400, rect.width * 0.55);
+  }
+
+  function init() {
+    resize();
+    const vaxRate = parseInt(document.getElementById('vaxSlider').value) / 100;
+    const maskRate = parseInt(document.getElementById('maskSlider').value) / 100;
+    people = [];
+    for (let i = 0; i < POP; i++) {
+      const vaccinated = Math.random() < vaxRate;
+      people.push({
+        x: Math.random() * (canvas.width - 20) + 10,
+        y: Math.random() * (canvas.height - 20) + 10,
+        vx: (Math.random() - 0.5) * 1.5,
+        vy: (Math.random() - 0.5) * 1.5,
+        state: vaccinated ? 'vaccinated' : 'healthy',
+        mask: Math.random() < maskRate,
+        timer: 0
+      });
+    }
+    // Infect one
+    const h = people.find(p => p.state === 'healthy');
+    if (h) { h.state = 'infected'; h.timer = 0; }
+    updateCounts();
+    draw();
+  }
+
+  function updateCounts() {
+    let h = 0, inf = 0, r = 0, v = 0;
+    people.forEach(p => {
+      if (p.state === 'healthy') h++;
+      else if (p.state === 'infected') inf++;
+      else if (p.state === 'recovered') r++;
+      else if (p.state === 'vaccinated') v++;
+    });
+    document.getElementById('countHealthy').textContent = h;
+    document.getElementById('countInfected').textContent = inf;
+    document.getElementById('countRecovered').textContent = r;
+    document.getElementById('countVaccinated').textContent = v;
+  }
+
+  function draw() {
+    c.clearRect(0, 0, canvas.width, canvas.height);
+    const colors = { healthy: '#93BFCF', infected: '#c4532e', recovered: '#A17A5A', vaccinated: '#6bbf59' };
+    people.forEach(p => {
+      c.beginPath();
+      c.arc(p.x, p.y, RADIUS, 0, Math.PI * 2);
+      c.fillStyle = colors[p.state];
+      c.fill();
+      if (p.mask) {
+        c.beginPath();
+        c.arc(p.x, p.y, RADIUS + 3, 0, Math.PI * 2);
+        c.strokeStyle = 'rgba(90,143,163,0.4)';
+        c.lineWidth = 1.5;
+        c.stroke();
+      }
+    });
+  }
+
+  function step() {
+    const maskReduction = parseInt(document.getElementById('maskSlider').value) / 100 * 0.5;
+
+    people.forEach(p => {
+      p.x += p.vx; p.y += p.vy;
+      if (p.x < RADIUS || p.x > canvas.width - RADIUS) p.vx *= -1;
+      if (p.y < RADIUS || p.y > canvas.height - RADIUS) p.vy *= -1;
+      p.x = Math.max(RADIUS, Math.min(canvas.width - RADIUS, p.x));
+      p.y = Math.max(RADIUS, Math.min(canvas.height - RADIUS, p.y));
+
+      if (p.state === 'infected') {
+        p.timer++;
+        if (p.timer > RECOVER_TIME) p.state = 'recovered';
+      }
+    });
+
+    // Infection spread
+    people.forEach(inf => {
+      if (inf.state !== 'infected') return;
+      people.forEach(target => {
+        if (target.state !== 'healthy') return;
+        const dx = inf.x - target.x, dy = inf.y - target.y;
+        if (Math.sqrt(dx * dx + dy * dy) < INFECT_DIST) {
+          let prob = INFECT_PROB;
+          if (inf.mask) prob *= 0.5;
+          if (target.mask) prob *= 0.5;
+          if (Math.random() < prob) target.state = 'infected';
+        }
+      });
+    });
+
+    updateCounts();
+    draw();
+    if (running && people.some(p => p.state === 'infected')) {
+      animId = requestAnimationFrame(step);
+    } else {
+      running = false;
+    }
+  }
+
+  document.getElementById('contagionStart')?.addEventListener('click', () => {
+    if (running) return;
+    if (!people.some(p => p.state === 'infected')) init();
+    running = true;
+    step();
+  });
+
+  document.getElementById('contagionReset')?.addEventListener('click', () => {
+    running = false;
+    if (animId) cancelAnimationFrame(animId);
+    init();
+  });
+
+  document.getElementById('vaxSlider')?.addEventListener('input', (e) => {
+    document.getElementById('vaxValue').textContent = e.target.value + '%';
+    if (!running) init();
+  });
+
+  document.getElementById('maskSlider')?.addEventListener('input', (e) => {
+    document.getElementById('maskValue').textContent = e.target.value + '%';
+  });
+
+  document.querySelector('[data-tab="tab-contagion"]')?.addEventListener('click', () => {
+    setTimeout(() => { resize(); init(); }, 100);
+  });
+
+  window.addEventListener('resize', () => { if (document.getElementById('tab-contagion').classList.contains('active')) { resize(); draw(); } });
+})();
 </script>
 
 </body>
