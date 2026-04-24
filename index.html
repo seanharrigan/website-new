@@ -770,7 +770,6 @@
         </div>
       </div>
       <div class="awards-nav">
-        <button class="awards-nav-btn" id="awardPrev"><i class="fa-solid fa-chevron-left"></i></button>
         <div class="awards-tabs" id="awardsTabs">
           <button class="awards-tab active" data-slide="0">CIHR CGSM-M</button>
           <button class="awards-tab" data-slide="1">Watters Fellowship</button>
@@ -778,7 +777,6 @@
           <button class="awards-tab" data-slide="3">Donna Gibson</button>
           <button class="awards-tab" data-slide="4">Elliott Fellowship</button>
         </div>
-        <button class="awards-nav-btn" id="awardNext"><i class="fa-solid fa-chevron-right"></i></button>
       </div>
     </div>
   </div>
@@ -1114,9 +1112,6 @@ document.querySelector('[data-tab="tab-epi"]')?.addEventListener('click', () => 
   tabs.forEach(tab => {
     tab.addEventListener('click', () => goTo(parseInt(tab.dataset.slide)));
   });
-
-  document.getElementById('awardPrev').addEventListener('click', () => goTo(current - 1));
-  document.getElementById('awardNext').addEventListener('click', () => goTo(current + 1));
 })();
 
 // === Contagion Simulation ===
