@@ -1,1346 +1,1022 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta property="og:image:type" content="images/share.png">
-<meta property="og:title" content="Sean's Site - Epi & Data Science"/>
-<meta property="og:image" content="./images/share.png"/>
-<meta property="og:description" content="Epidemiology, data science and health outcomes research"/>
-<meta property="og:url" content="https://seanharrigan.github.io/website/"/>
-<meta property="og:image:width" content="1200"/>
-<meta property="og:image:height" content="627"/>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Sean Harrigan — Biostatistics & Epidemiology"/>
+  <meta property="og:image" content="./images/og-share.png">
+  <meta property="og:image:type" content="image/png">
+  <meta property="og:description" content="Associate Director of Biostatistics at RainCity Analytics. Epidemiology, data science, and health outcomes research."/>
+  <meta property="og:url" content="https://seanharrigan.github.io/website-new/"/>
+  <meta property="og:image:width" content="1200"/>
+  <meta property="og:image:height" content="630"/>
 
-<!-- This script got from frontendfreecode.com -->
+  <title>Sean Harrigan — Biostatistics & Epidemiology</title>
 
-<title>Sean's Website</title>
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
-<!--<script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>-->
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect fill='%2393BFCF' rx='18' width='100' height='100'/><text x='50' y='68' font-size='52' font-family='system-ui,sans-serif' font-weight='700' fill='white' text-anchor='middle'>SH</text></svg>">
 
-<link href="css/style.css" rel="stylesheet">
-<link href="http://netdna.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
-<script type="text/javascript" src="assets/twitterbootstrap/js/bootstrap-tab.js"></script>
-<!-- <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" ></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.min.js" integrity="sha384-Atwg2Pkwv9vp0ygtn1JAojH0nYbwNJLPhwyoVbhoPwBhjQPR5VtM2+xf0Uwh9KtT" crossorigin="anonymous"></script> -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+  <!-- Preload headshot -->
+  <link rel="preload" href="images/sean-headshot.jpg" as="image">
 
-<script src="https://kit.fontawesome.com/56df5df552.js" crossorigin="anonymous"></script>
-<link rel="stylesheet" href="css/styles.css">
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;900&family=Ubuntu:wght@300&display=swap" rel="stylesheet"></head>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;900&family=Roboto&family=Ubuntu:wght@300&display=swap" rel="stylesheet">
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
 
-<script defer src="js/scroll_animation.js"></script>
+  <!-- Icons -->
+  <script src="https://kit.fontawesome.com/56df5df552.js" crossorigin="anonymous"></script>
 
+  <!-- Particles -->
+  <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
 
-<script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script> 
-<script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
-<script src="http://netdna.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  <!-- Chart.js for SIR model -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
 
-<style></style>
-
+  <!-- Styles -->
+  <link href="css/style.css" rel="stylesheet">
 </head>
 <body>
-<section id="home">
 
-  <nav class="navbar navbar-expand-lg bg-body-tertiary" style=" background: linear-gradient(#93BFCF, 10%, #E0ECF1 100%)">
-    <div class="container-fluid">
-      <a class="navbar-brand" href="#home" style="color:black; opacity:0.8">Epi & Data Sci.</a>
-      <button class="navbar-toggler collapsed d-flex d-lg-none flex-column justify-content-around" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="toggler-icon top-bar"></span>
-        <span class="toggler-icon middle-bar"></span>
-        <span class="toggler-icon bottom-bar"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNav" >
-        <ul class="navbar-nav ms-auto">
-          <li class="nav-item">
-            <a class="nav-link" href="#about">About</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#cards">Publications</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#code">Code</a>
-          </li>
-          <li style="outline: none;" class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              Example Work
-            </a>
-            <ul style = "background-color: #E0ECF1" class="dropdown-menu">
-              <li><a class="dropdown-item" href="r/covid_analysis/covid-analysis.html">Figure</a></li>
-              <li><a class="dropdown-item" href="https://qg2ap2-sean-harrigan.shinyapps.io/covid_dashboard/?_ga=2.244017029.1867657955.1677176432-1345087095.1677176432">Dashboard</a></li>
-              <li><a class="dropdown-item" href="./r/covid_analysis/covid_manuscript.html">Report</a></li>
-            </ul>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#awards">Recognition</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#testimonials">Volunteer</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#contactform">Contact</a>
-          </li>
-        </ul>
-      </div>
+<!-- ===== Navbar ===== -->
+<nav class="navbar" id="navbar">
+  <a href="#hero" class="navbar-brand">Sean Harrigan</a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#about">About</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#publications">Publications</a></li>
+    <li><a href="#code">Code</a></li>
+    <li><a href="#recognition">Recognition</a></li>
+    <li><a href="#volunteer">Volunteer</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+</nav>
+
+<!-- ===== Hero ===== -->
+<section class="hero" id="hero">
+  <div id="particles-js"></div>
+  <div class="hero-content">
+    <h1>Sean Harrigan</h1>
+    <div style="text-align:center;">
+      <span class="hero-tagline">Epidemiology, data science and health outcomes research.</span>
     </div>
-  </nav>
-
+    <div class="hero-buttons">
+      <a href="#contact" class="btn btn-primary-custom">Contact me</a>
+      <a href="#" onclick="openCvModal(event)" class="btn btn-secondary-custom">See my CV</a>
+    </div>
+    <div class="hero-social">
+      <a href="https://orcid.org/0000-0001-6021-7402" aria-label="ORCiD"><i class="fa-brands fa-orcid"></i></a>
+      <a href="https://www.linkedin.com/in/sean-harrigan-8a281614a/" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+      <a href="https://github.com/seanharrigan" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+    </div>
+  </div>
 </section>
 
-<section class="section home-5-bg" id="home">
-    <div id="particles-js"></div>
-    <div class="bg-overlay"></div>
-    <div class="home-center" style="background-color: red; background: linear-gradient(#93BFCF  20%, white)" ><!--background: linear-gradient(white 0%,  grey 60%, grey 100%)">-->
-        <div class="home-desc-center">
-            <div class="container">
-                <div class="justify-content-center row">
-                    <div class="col-lg-7">
-                        <div class="mt-40 text-center home-5-content">
-                            <div class="home-icon mb-4"><i class="mdi mdi-pinwheel mdi-spin text-white h1"></i></div>
-                            <h1 class="text-gray font-weight-normal home-5-title mb-0" style=" font-family: 'Montserrat', sans-serif;">Sean Harrigan</h1>
-                              <p class="text-white-70 mt-4 f-15 mb-0 intro typing-demo-title hidden-mobile" style="text-align: center;">
-                                With a passion for epidemiology, data science and health research.
-                              </p>
-                              <p class="text-white-70 mt-4 f-15 mb-0 intro typing-demo-title-mob1 hidden-desktop" style="text-align: center;">
-                                Epi, data sci and research.
-                              </p>
-                            <div class="mt-5">
-                                <!--<input class="btn btn-secondary" type="button" value="Contact me" href="#footer"> --> 
-                                <a class="btn btn-secondary" style="color:white; " href="#contactform">Contact me </a>
-                                <a class="btn btn-info" style="color:white; font-weight: normal;" href="html/cv.html"> See my CV </a>
-                                <p style="text-align: center;">
-                                  <a href="https://orcid.org/0000-0001-6021-7402" class="footer fa fa-2x fa-brands fa-orcid" style="padding-right: 1%; padding-left: 1%; padding-top: 5%"></a>
-                                  <a href="https://www.linkedin.com/in/sean-harrigan-8a281614a/" class="footer fa  fa-2x fa-linkedin" style="padding-right: 1%; padding-left: 1%; padding-top: 5%"></a>
-                                  <a href="https://github.com/seanharrigan" class="footer fa fa-2x fa-github" style="padding-right: 1%; padding-left: 1%; padding-top: 5%"></a>
-                              </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div> . 
-    </div>
-</section><div id="bcl"><a style="font-size:8pt;text-decoration:none;color:white;" href="http://www.devanswer.com">Animation credit</a></div>
+<!-- ===== About ===== -->
+<section class="about" id="about">
+  <div class="container">
+    <h2 class="section-title reveal">About me</h2>
+    <hr class="section-divider">
 
+    <div class="about-grid reveal">
+      <img class="about-photo" src="images/sean-headshot.jpg" alt="Sean Harrigan">
+      <div class="about-text">
+        <p>
+          My name is Sean, and I am the Associate Director of Biostatistics at RainCity Analytics, a health outcomes and
+          economics research company based in Vancouver, Canada. I lead multidisciplinary teams across HEOR and biostatistics
+          projects, overseeing work from study design through final delivery. My work spans real-world evidence generation,
+          systematic literature reviews, meta-analyses, and survival and comparative effectiveness analyses across a range
+          of disease areas, including cancer and rare diseases.
+        </p>
+        <p>
+          My background spans academia, public health, and industry, with roles at the BC Centre for Disease Control, UBC,
+          and various global health initiatives. I have a passion for health research, epidemiology, statistical methods, and
+          reproducible data science — particularly in data analysis, visualisation, and automation.
+        </p>
+        <a class="btn btn-secondary-custom" href="#" onclick="openCvModal(event)">See my CV</a>
+      </div>
+    </div>
+
+    <div class="skills-grid reveal">
+      <a href="#publications" class="skill-card" style="text-decoration: none; color: inherit;">
+        <i class="fa-solid fa-gears"></i>
+        <h4>Methodology</h4>
+        <p>In-depth knowledge and practical experience in epidemiological research methods and scientific writing</p>
+      </a>
+      <a href="#code" class="skill-card" style="text-decoration: none; color: inherit;">
+        <i class="fa-solid fa-calculator"></i>
+        <h4>Statistics</h4>
+        <p>Statistical analyses for scientific studies, including regression, survival, mediation, and causal-based methods</p>
+      </a>
+      <a href="#code" class="skill-card" onclick="setTimeout(()=>document.querySelector('[data-tab=tab-langs]').click(),500)" style="text-decoration: none; color: inherit;">
+        <i class="fa-solid fa-code"></i>
+        <h4>Data Science</h4>
+        <p>Data wrangling and visualisation, automated analytical pipelines, and machine learning techniques</p>
+      </a>
+    </div>
+  </div>
+</section>
+
+<div class="section-transition white-to-blue"></div>
+
+<!-- ===== Experience ===== -->
+<section class="experience" id="experience">
+  <div class="container">
+    <h2 class="section-title reveal">Experience</h2>
+    <hr class="section-divider">
+
+    <div class="timeline reveal">
+
+      <!-- Associate Director -->
+      <div class="timeline-item expanded">
+        <div class="timeline-dot"></div>
+        <div class="timeline-card">
+          <div class="timeline-header">
+            <div class="timeline-header-text">
+              <h4><a href="https://www.raincity-analytics.com/">Associate Director of Biostatistics - RainCity Analytics</a></h4>
+              <span class="timeline-date">2025 - Present</span>
+              <p class="timeline-summary">Leading multidisciplinary HEOR and biostatistics teams</p>
+            </div>
+            <img class="timeline-header-logo" src="images/raincity.png" alt="RainCity Analytics">
+          </div>
+          <div class="timeline-body">
+            <img class="timeline-company-logo" src="images/raincity.png" alt="RainCity Analytics">
+            <p>
+              As Associate Director of Biostatistics at <a href="https://www.raincity-analytics.com/">RainCity Analytics</a>,
+              I lead and support multidisciplinary teams across a range of HEOR and biostatistics projects, overseeing work
+              from study design through final delivery. I manage project timelines, resourcing, and client communication,
+              while mentoring and supporting statisticians and research staff.
+            </p>
+            <p>
+              Alongside these leadership responsibilities, I remain hands-on with the work, contributing directly to complex
+              statistical analyses and scientific writing. This includes real-world evidence generation, survival and comparative
+              effectiveness analyses, and the preparation of abstracts, manuscripts, and regulatory-facing reports.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Research Statistician -->
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-card">
+          <div class="timeline-header">
+            <div class="timeline-header-text">
+              <h4><a href="https://www.raincity-analytics.com/">Research Statistician - RainCity Analytics</a></h4>
+              <span class="timeline-date">2023 - 2025</span>
+              <p class="timeline-summary">Health economics and outcomes research across diverse disease areas</p>
+            </div>
+            <img class="timeline-header-logo" src="images/raincity.png" alt="RainCity Analytics">
+          </div>
+          <div class="timeline-body">
+            <img class="timeline-company-logo" src="images/raincity.png" alt="RainCity Analytics">
+            <p>
+              <a href="https://www.raincity-analytics.com/">RainCity Analytics</a> specialises in health economics and outcomes
+              research across a diverse range of disease areas. As a Research Statistician, I worked with a variety of clients,
+              including pharmaceutical companies and global health organizations such as the WHO.
+            </p>
+            <ul>
+              <li>Led and contributed to SLRs, meta-analyses, and observational research across oncology and rare diseases</li>
+              <li>Served as project lead on multiple research studies, managing timelines, deliverables, and client communication</li>
+              <li>Designed and implemented analytical frameworks for real-world evidence (RWE) generation</li>
+              <li>Conducted statistical analyses in R, including meta-analysis, survival analysis, and modelling of clinical outcomes</li>
+              <li>Authored scientific manuscripts, abstracts, and regulatory reports for HTA and peer-reviewed publication</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Epidemiologist -->
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-card">
+          <div class="timeline-header">
+            <div class="timeline-header-text">
+              <h4><a href="https://a4ph.med.ubc.ca/projects-and-initiatives/bc-covid-19-cohort/">Epidemiologist - UBC / BC CDC</a></h4>
+              <span class="timeline-date">2021 - 2023</span>
+              <p class="timeline-summary">COVID-19 variant severity research using large administrative databases</p>
+            </div>
+            <img class="timeline-header-logo" src="images/bccdc.png" alt="BC CDC">
+          </div>
+          <div class="timeline-body">
+            <img class="timeline-company-logo" src="images/bccdc.png" alt="BC CDC">
+            <p>
+              I conducted research related to COVID-19 variants of concern (VOC) severity at the
+              <a href="https://a4ph.med.ubc.ca/projects-and-initiatives/bc-covid-19-cohort/">BC Centre for Disease Control (BCCDC)</a>.
+              Our work used large administrative databases to understand how these VOCs impact disease severity,
+              with a focus on how social determinants of health affect outcomes.
+            </p>
+            <ul>
+              <li>Conceptualised and conducted all aspects of epidemiological research studies</li>
+              <li>Led statistical analysis in R, including causal frameworks, propensity scores, IPTW, and mediation techniques</li>
+              <li>Led the scientific writing of <a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4053482">manuscripts</a> for publication</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Researcher UBC/VCH -->
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-card">
+          <div class="timeline-header">
+            <div class="timeline-header-text">
+              <h4><a href="https://www.vch.ca/">Researcher &amp; Primary Data Analyst - UBC &amp; VCH</a></h4>
+              <span class="timeline-date">2020 - 2021</span>
+              <p class="timeline-summary">Occupational health and safety of health workers during COVID-19</p>
+            </div>
+            <img class="timeline-header-logo" src="images/vch.png" alt="Vancouver Coastal Health">
+          </div>
+          <div class="timeline-body">
+            <img class="timeline-company-logo" src="images/vch.png" alt="Vancouver Coastal Health">
+            <p>
+              Focused on occupational health and safety of health workers during COVID-19, working on the Physician
+              Occupational Health and Safety (POSH) Unit in Vancouver Coastal Health and the WHO Collaborating Centre at UBC.
+            </p>
+            <ul>
+              <li>Co-led a <a href="https://bmjopen.bmj.com/content/12/10/e064804">study</a> in collaboration with the WHO surveying healthcare workers globally</li>
+              <li>Created a surveillance database for all physicians in Vancouver during the pandemic</li>
+              <li>Automated daily surveillance data and created weekly summary reports</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Research Assistant UBC -->
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-card">
+          <div class="timeline-header">
+            <div class="timeline-header-text">
+              <h4><a href="https://spph.ubc.ca/">Research Assistant - UBC SPPH</a></h4>
+              <span class="timeline-date">2019 - 2021</span>
+              <p class="timeline-summary">Urban environment, cancer risk, and the BC Generations Project cohort</p>
+            </div>
+            <img class="timeline-header-logo" src="images/ubc.png" alt="UBC">
+          </div>
+          <div class="timeline-body">
+            <img class="timeline-company-logo" src="images/ubc.png" alt="UBC">
+            <p>
+              Studied how characteristics of the urban environment may be associated with cancer risk, physical
+              activity and obesity, using the BC Generations Project cohort.
+            </p>
+            <ul>
+              <li>Conducted analyses on a large prospective cohort</li>
+              <li>Scientific writing, including abstracts, literature reviews, reports, and manuscripts</li>
+              <li>Completed my <a href="https://open.library.ubc.ca/soa/cIRcle/collections/ubctheses/24/items/1.0396872">Master's Thesis</a> on breast cancer risk and the built environment</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Broadstreet -->
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-card">
+          <div class="timeline-header">
+            <div class="timeline-header-text">
+              <h4><a href="https://www.broadstreetheor.com">Research Associate - Broadstreet HEOR</a></h4>
+              <span class="timeline-date">2017 - 2019</span>
+              <p class="timeline-summary">Systematic reviews and meta-analyses in health economics and outcomes research</p>
+            </div>
+            <img class="timeline-header-logo" src="images/Broadstreet_logo.png" alt="Broadstreet HEOR" style="width:28px; height:28px;">
+          </div>
+          <div class="timeline-body">
+            <img class="timeline-company-logo" src="images/Broadstreet_logo.png" alt="Broadstreet HEOR">
+            <p>
+              Gained in-depth experience in the design and execution of epidemiological studies with a focus on
+              systematic reviews and meta-analyses at <a href="https://www.broadstreetheor.com">Broadstreet HEOR</a>.
+            </p>
+            <ul>
+              <li>Conducted a systematic literature review and <a href="https://link.springer.com/article/10.1007/s40266-020-00792-9">network meta-analysis</a></li>
+              <li>Active participation in team meetings with pharmaceutical clients</li>
+              <li>Continued education in decision modeling and meta-analysis methods</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<div class="section-transition blue-to-white"></div>
+
+<!-- ===== Education ===== -->
+<section class="education" id="education">
+  <div class="container">
+    <h2 class="section-title reveal">Education</h2>
+    <hr class="section-divider">
+    <div class="edu-timeline reveal">
+      <div class="edu-items">
+        <div class="edu-item">
+          <div class="edu-dot"></div>
+          <span class="edu-year">2019</span>
+          <div class="edu-item-text">
+            <h5>BSc in Biology</h5>
+            <p>Minor in Statistics</p>
+            <p>UVic</p>
+          </div>
+          <div class="edu-desc">Foundation in biological sciences and quantitative methods, sparking my interest in epidemiology and health research.</div>
+        </div>
+        <div class="edu-item">
+          <div class="edu-dot"></div>
+          <span class="edu-year">2021</span>
+          <div class="edu-item-text">
+            <h5>MSc Epidemiology</h5>
+            <p>Population &amp; Public Health</p>
+            <p>UBC SPPH</p>
+          </div>
+          <div class="edu-desc">Thesis on breast cancer risk and the built environment. Recipient of CIHR scholarship, Donna Gibson Prize, and multiple fellowships.</div>
+        </div>
+        <div class="edu-item">
+          <div class="edu-dot"></div>
+          <span class="edu-year">2022</span>
+          <div class="edu-item-text">
+            <h5>Data Science Certificate</h5>
+            <p>Programming in Python</p>
+            <p>UBC</p>
+          </div>
+          <div class="edu-desc">Hands-on training in data wrangling, visualisation, and reproducible analysis workflows using Python and Pandas.</div>
+        </div>
+        <div class="edu-item">
+          <div class="edu-dot"></div>
+          <span class="edu-year">2023</span>
+          <div class="edu-item-text">
+            <h5>Decision Modeling</h5>
+            <p>Health Economic Evaluation</p>
+            <p>University of York</p>
+          </div>
+          <div class="edu-desc">Advanced methods in cost-effectiveness analysis and decision-analytic modeling for health technology assessment.</div>
+        </div>
+        <div class="edu-item">
+          <div class="edu-dot"></div>
+          <span class="edu-year">2023</span>
+          <div class="edu-item-text">
+            <h5>ML &amp; AI Certificate</h5>
+            <p>University of Toronto</p>
+          </div>
+          <div class="edu-desc">Supervised and unsupervised learning, neural networks, and applied machine learning using Scikit-Learn and TensorFlow.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-transition white-to-blue"></div>
+
+<!-- ===== Publications ===== -->
+<section class="publications" id="publications">
+  <div class="container">
+    <h2 class="section-title reveal">Publications</h2>
+    <hr class="section-divider">
+
+    <p class="pub-section-label reveal">Academic Journals</p>
+
+    <div class="pub-panels reveal" id="pubPanels">
+      <div class="pub-panel active">
+        <img class="pub-panel-img" src="./images/cid.png" alt="CID Publication">
+        <span class="pub-panel-label">CID</span>
+        <div class="pub-panel-info">
+          <span class="pub-panel-journal">Clinical Infectious Diseases</span>
+          <h5>COVID-19 Variant Severity in British Columbia</h5>
+          <a href="https://academic.oup.com/cid/article/76/3/e18/6679248?rss=1" class="pub-panel-link">Read paper <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+      </div>
+      <div class="pub-panel">
+        <img class="pub-panel-img" src="./images/ubc-thesis.png" alt="UBC Thesis">
+        <span class="pub-panel-label">Thesis</span>
+        <div class="pub-panel-info">
+          <span class="pub-panel-journal">UBC Thesis</span>
+          <h5>Breast Cancer Risk and the Built Environment</h5>
+          <a href="https://open.library.ubc.ca/collections/ubctheses/24/items/1.0396872" class="pub-panel-link">Read thesis <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+      </div>
+      <div class="pub-panel">
+        <img class="pub-panel-img" src="./images/bmj.png" alt="BMJ Open">
+        <span class="pub-panel-label">BMJ</span>
+        <div class="pub-panel-info">
+          <span class="pub-panel-journal">BMJ Open</span>
+          <h5>Health Workers' Occupational Safety During the Pandemic</h5>
+          <a href="https://bmjopen.bmj.com/content/12/10/e064804" class="pub-panel-link">Read paper <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+      </div>
+      <div class="pub-panel">
+        <img class="pub-panel-img" src="./images/ijid.png" alt="IJID">
+        <span class="pub-panel-label">IJID</span>
+        <div class="pub-panel-info">
+          <span class="pub-panel-journal">Int. Journal of Infectious Diseases</span>
+          <h5>COVID-19 Variant Severity and Social Determinants</h5>
+          <a href="https://www.ijidonline.com/article/S1201-9712(22)00639-7/fulltext" class="pub-panel-link">Read paper <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+      </div>
+      <div class="pub-panel">
+        <img class="pub-panel-img" src="./images/springer.png" alt="Springer">
+        <span class="pub-panel-label">D&amp;A</span>
+        <div class="pub-panel-info">
+          <span class="pub-panel-journal">Drugs &amp; Aging (Springer)</span>
+          <h5>Network Meta-Analysis of Drug Effectiveness</h5>
+          <a href="https://link.springer.com/article/10.1007/s40266-020-00792-9" class="pub-panel-link">Read paper <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Abstracts horizontal scroll -->
+    <div class="abstracts-section reveal">
+      <h4>Recent Conference Abstracts</h4>
+      <div class="abstracts-scroll">
+        <div class="abstract-card">
+          <div class="abstract-badge-bar eha"></div>
+          <div class="abstract-card-inner">
+            <span class="abstract-conf eha">EHA Congress 2025</span>
+            <a href="https://library.ehaweb.org/eha/2025/eha2025-congress/4160360/">Real-World Outcomes of Brexucabtagene Autoleucel (Brexu-cel)</a>
+            <span>2025</span>
+          </div>
+        </div>
+        <div class="abstract-card">
+          <div class="abstract-badge-bar sd"></div>
+          <div class="abstract-card-inner">
+            <span class="abstract-conf sd">ScienceDirect 2025</span>
+            <a href="https://www.sciencedirect.com/science/article/abs/pii/S2152265025028034">Hematology/Oncology and Stem Cell Therapy</a>
+            <span>2025</span>
+          </div>
+        </div>
+        <div class="abstract-card">
+          <div class="abstract-badge-bar aacr"></div>
+          <div class="abstract-card-inner">
+            <span class="abstract-conf aacr">AACR Annual Meeting 2025</span>
+            <a href="https://aacrjournals.org/cancerres/article/85/8_Supplement_1/4991/756783/Abstract-4991-Temporal-trends-in-health-related">Temporal Trends in Health-Related Quality of Life Outcomes</a>
+            <span>2025</span>
+          </div>
+        </div>
+        <div class="abstract-card">
+          <div class="abstract-badge-bar eha"></div>
+          <div class="abstract-card-inner">
+            <span class="abstract-conf eha">EHA Congress 2024</span>
+            <a href="https://library.ehaweb.org/eha/2024/eha2024-congress/420846/">Quantifying the Relationship Between Transfusion Independence and Outcomes</a>
+            <span>2024</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <p style="text-align: center; padding-top: 2rem;">
+      <a href="https://orcid.org/0000-0001-6021-7402" style="color: var(--gray-light); font-size: 2.5rem;" aria-label="ORCiD">
+        <i class="fa-brands fa-orcid"></i>
+      </a>
+    </p>
+  </div>
+</section>
+
+<div class="section-transition blue-to-white"></div>
+
+<!-- ===== Code / Example Work ===== -->
+<section class="code-section" id="code">
+  <div class="container">
+    <h2 class="section-title reveal">Example Work</h2>
+    <hr class="section-divider">
+
+    <div class="code-intro reveal">
+      <p>
+        Below is a brief example of my programming skillset using publicly available data from the
+        <a href="https://open.canada.ca/data/en/dataset/261c32ab-4cfd-4f81-9dea-7b64065690dc">Government of Canada</a>.
+        I walk through data preparation, visualisation and reporting techniques.
+      </p>
+    </div>
+
+    <div class="code-tabs reveal">
+      <div class="tab-nav">
+        <button class="tab-btn active" data-tab="tab-vis"><i class="fa-solid fa-chart-pie"></i> Data Vis</button>
+        <button class="tab-btn" data-tab="tab-dash"><i class="fa-solid fa-chart-line"></i> Dashboard</button>
+        <button class="tab-btn" data-tab="tab-report"><i class="fa-solid fa-pencil"></i> Reporting</button>
+        <button class="tab-btn" data-tab="tab-epi"><i class="fa-solid fa-virus"></i> Epi Simulation</button>
+        <button class="tab-btn" data-tab="tab-langs"><i class="fa-solid fa-code"></i> Languages</button>
+      </div>
+
+      <!-- Data Vis -->
+      <div class="tab-content active" id="tab-vis">
+        <p class="tab-typing">&gt; library(ggplot2)</p>
+        <p class="tab-text">
+          Data can be complicated to understand, so providing concise and easy-to-understand visualisations is key
+          to data exploration and final manuscripts. I have a passion for creating appealing and informative
+          figures to help interpret the data. The figure below summarises the COVID-19 pandemic from a Canadian perspective,
+          created using ggplot2 in R with publicly available data.
+        </p>
+        <div style="text-align:center;">
+          <a class="btn btn-primary-custom" href="r/covid_analysis/covid-analysis.html">See code</a>
+        </div>
+        <img src="images/epi-plot-full.png" alt="COVID-19 epidemiological plot">
+      </div>
+
+      <!-- Dashboard -->
+      <div class="tab-content" id="tab-dash">
+        <p class="tab-typing">&gt; library(shiny)</p>
+        <p class="tab-text">
+          Sometimes a static image isn't enough. Interactive dashboards allow users to explore data dynamically.
+          The dashboard below was created in R using Shiny and styled with CSS, allowing users to explore infection,
+          vaccination, and mortality rates by province and year.
+        </p>
+        <div style="text-align:center;">
+          <a class="btn btn-primary-custom" href="https://qg2ap2-sean-harrigan.shinyapps.io/covid_dashboard/?_ga=2.244017029.1867657955.1677176432-1345087095.1677176432">Visit dashboard</a>
+        </div>
+        <iframe height="850" frameborder="no" src="https://qg2ap2-sean-harrigan.shinyapps.io/covid_dashboard/?_ga=2.244017029.1867657955.1677176432-1345087095.1677176432"></iframe>
+      </div>
+
+      <!-- Reporting -->
+      <div class="tab-content" id="tab-report">
+        <p class="tab-typing">&gt; render()</p>
+        <p class="tab-text">
+          Analysis is only one aspect of good research. The other important aspect is communicating results effectively.
+          I focus on building efficient workflows with automated reports and manuscripts, allowing small changes to be
+          easily implemented and shared with colleagues.
+        </p>
+        <div style="text-align:center;">
+          <a class="btn btn-primary-custom" href="r/covid_analysis/covid_manuscript.html">View report</a>
+        </div>
+        <iframe height="850" frameborder="no" src="r/covid_analysis/covid_manuscript.html"></iframe>
+      </div>
+
+      <!-- Epi Simulation -->
+      <div class="tab-content" id="tab-epi">
+        <p class="tab-typing">&gt; simulate_sir()</p>
+        <p class="tab-text">
+          The SIR (Susceptible-Infected-Recovered) model is a foundational compartmental model in epidemiology.
+          Adjust the parameters below to see how the basic reproduction number (R<sub>0</sub>) and recovery rate
+          affect disease dynamics in a population.
+        </p>
+        <div style="max-width: 700px; margin: 0 auto;">
+          <div style="display: flex; gap: 32px; flex-wrap: wrap; margin-bottom: 20px;">
+            <div style="flex: 1; min-width: 200px;">
+              <label style="font-size: 0.85rem; font-weight: 600; color: var(--gray-dark); display: block; margin-bottom: 6px;">
+                R<sub>0</sub> (Basic Reproduction Number): <span id="r0Value" style="color: var(--blue-dark);">2.5</span>
+              </label>
+              <input type="range" id="r0Slider" min="0.5" max="8" step="0.1" value="2.5" style="width: 100%; accent-color: var(--blue-primary);">
+            </div>
+            <div style="flex: 1; min-width: 200px;">
+              <label style="font-size: 0.85rem; font-weight: 600; color: var(--gray-dark); display: block; margin-bottom: 6px;">
+                Recovery Rate (γ): <span id="gammaValue" style="color: var(--blue-dark);">0.1</span>
+              </label>
+              <input type="range" id="gammaSlider" min="0.02" max="0.3" step="0.01" value="0.1" style="width: 100%; accent-color: var(--blue-primary);">
+            </div>
+          </div>
+          <div style="display: flex; gap: 16px; justify-content: center; margin-bottom: 16px; font-size: 0.8rem;">
+            <span><span style="display:inline-block;width:12px;height:12px;background:#93BFCF;border-radius:2px;margin-right:4px;vertical-align:middle;"></span> Susceptible</span>
+            <span><span style="display:inline-block;width:12px;height:12px;background:#c4532e;border-radius:2px;margin-right:4px;vertical-align:middle;"></span> Infected</span>
+            <span><span style="display:inline-block;width:12px;height:12px;background:#A17A5A;border-radius:2px;margin-right:4px;vertical-align:middle;"></span> Recovered</span>
+          </div>
+          <canvas id="sirChart" height="300"></canvas>
+          <p style="font-size: 0.78rem; color: var(--gray-light); text-align: center; margin-top: 12px;">
+            Population: 10,000 | Initial infected: 10 | Duration: 200 days
+          </p>
+        </div>
+      </div>
+
+      <!-- Languages -->
+      <div class="tab-content" id="tab-langs">
+        <p class="tab-text">
+          I have a passion for coding and using a variety of tools to accomplish my work efficiently.
+          My language of choice for analysis is R. To me, <strong>reproducibility</strong> is key, so optimising my
+          code and workflow is always a priority.
+        </p>
+        <div class="lang-list">
+          <div class="lang-row">
+            <div class="lang-icon"><i class="fa-brands fa-r-project"></i></div>
+            <div class="lang-name"><h5>R</h5><span>Experienced</span></div>
+            <div class="lang-bar"><div class="lang-bar-fill" style="width: 95%"></div></div>
+            <div class="lang-desc">Daily use for data wrangling, statistical analysis, visualisation, Shiny dashboards, and automated reports</div>
+          </div>
+          <div class="lang-row">
+            <div class="lang-icon"><i class="fa-brands fa-python"></i></div>
+            <div class="lang-name"><h5>Python</h5><span>Intermediate</span></div>
+            <div class="lang-bar"><div class="lang-bar-fill" style="width: 65%"></div></div>
+            <div class="lang-desc">Data science with Pandas, visualisation with Altair, and machine learning with Scikit-Learn</div>
+          </div>
+          <div class="lang-row">
+            <div class="lang-icon"><i class="fa-brands fa-html5"></i></div>
+            <div class="lang-name"><h5>HTML / CSS</h5><span>Intermediate</span></div>
+            <div class="lang-bar"><div class="lang-bar-fill" style="width: 60%"></div></div>
+            <div class="lang-desc">Website design, Shiny dashboard styling, and Bootstrap-based responsive layouts</div>
+          </div>
+          <div class="lang-row">
+            <div class="lang-icon"><i class="fa-solid fa-terminal"></i></div>
+            <div class="lang-name"><h5>Bash / CLI</h5><span>Intermediate</span></div>
+            <div class="lang-bar"><div class="lang-bar-fill" style="width: 55%"></div></div>
+            <div class="lang-desc">Git version control, Make and Snakemake workflow automation</div>
+          </div>
+          <div class="lang-row">
+            <div class="lang-icon"><i class="fa-solid fa-database"></i></div>
+            <div class="lang-name"><h5>SQL</h5><span>Basic</span></div>
+            <div class="lang-bar"><div class="lang-bar-fill" style="width: 35%"></div></div>
+            <div class="lang-desc">Querying large administrative databases for extraction into R</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-transition white-to-blue"></div>
+
+<!-- ===== Recognition ===== -->
+<section class="recognition" id="recognition">
+  <div class="container">
+    <h2 class="section-title reveal">Recognition</h2>
+    <hr class="section-divider">
+
+    <p class="recognition-intro reveal">
+      I have received a number of significant awards for my work, including my MSc thesis, academic standing, and other initiatives.
+      These include national, provincial, and university-level recognition.
+    </p>
+
+    <!-- Top row: 3 cards -->
+    <div class="awards-grid-top reveal">
+      <div class="award-card">
+        <img src="https://grist.org/wp-content/uploads/2014/03/english_bay_vancouver_bc1.jpg" alt="Vancouver">
+        <div class="award-card-body">
+          <h5>CIHR CGSM-M</h5>
+          <span class="award-year">Award for MSc Thesis, 2020</span>
+          <p>The Canadian Institutes of Health Research's Canada Graduate Scholarships — Master's program provides financial support to high-calibre scholars. A national-level award given to 3,000 Master's students researching health.</p>
+          <div class="award-card-buttons">
+            <a href="https://www.bcgenerationsproject.ca/across-generations-bc-generations-project-newsletter-winter-2020-21/" class="btn btn-primary-custom">Read More</a>
+            <a href="https://open.library.ubc.ca/soa/cIRcle/collections/ubctheses/24/items/1.0396872" class="btn btn-secondary-custom">Thesis</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="award-card">
+        <img src="https://images.unsplash.com/photo-1674574124345-02c525664b65?auto=format&fit=crop&w=870&q=80" alt="Research">
+        <div class="award-card-body">
+          <h5>Laurel L. Watters Research Fellowship</h5>
+          <span class="award-year">Award for MSc Thesis, 2020</span>
+          <p>Awarded to a deserving graduate student in the Faculty of Medicine engaged in research into the causes, treatment, and cure of breast cancer.</p>
+          <div class="award-card-buttons">
+            <a href="https://grad-postdoc.med.ubc.ca/laurel-l-watters-research-fellowship/" class="btn btn-primary-custom">Read More</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="award-card">
+        <img src="https://images.unsplash.com/photo-1589917030663-849c7fe96c2b?auto=format&fit=crop&w=870&q=80" alt="Healthcare">
+        <div class="award-card-body">
+          <h5>Dr. Yassi COVID-19 Initiative</h5>
+          <span class="award-year">Team Recognition</span>
+          <p>Early in the pandemic, Dr. Yassi's team was called upon by VCH to assist with occupational health of health workers. Sean was the primary data analyst on this team.</p>
+          <div class="award-card-buttons">
+            <a href="https://spph.ubc.ca/yassi-covid-19-serving-front-line-workers/" class="btn btn-primary-custom">Read More</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bottom row: 2 cards, centered -->
+    <div class="awards-grid-bottom reveal">
+      <div class="award-card">
+        <img src="images/spph-building.png" alt="SPPH Building">
+        <div class="award-card-body">
+          <h5>Donna Gibson Prize</h5>
+          <span class="award-year">Graduating Student Award</span>
+          <p>Awarded on recommendation of the School of Population and Public Health, UBC, to the graduating student with the highest academic standing.</p>
+          <div class="award-card-buttons">
+            <a href="https://students.ubc.ca/enrolment/finances/award-search/vancouver/faculty-medicine/school-population-pulblic-health/3276" class="btn btn-primary-custom">See more</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="award-card">
+        <img src="https://images.unsplash.com/photo-1501770118606-b1d640526693?auto=format&fit=crop&w=870&q=80" alt="Community">
+        <div class="award-card-body">
+          <h5>George Elliott Fellowship</h5>
+          <span class="award-year">Community Health Award</span>
+          <p>The George Elliott Fellowship in Community Health is awarded to the student who contributed significantly to community health during their time at UBC.</p>
+          <div class="award-card-buttons">
+            <a href="https://students.ubc.ca/enrolment/finances/award-search/vancouver/faculty-medicine/school-population-pulblic-health/3288" class="btn btn-primary-custom">See more</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-transition blue-to-white"></div>
+
+<!-- ===== Volunteer ===== -->
+<section class="volunteer" id="volunteer">
+  <div class="container">
+    <h2 class="section-title reveal">Volunteer</h2>
+    <hr class="section-divider">
+
+    <p class="volunteer-intro reveal">
+      Volunteering has always been an important part of my life. I have been part of two global health projects
+      through UBC's Global Health Initiative, aimed at giving back to local communities and providing lasting impact through research.
+    </p>
+
+    <div class="volunteer-grid reveal">
+      <div class="volunteer-card">
+        <h4>Oasis Community Health Foundation</h4>
+        <span class="volunteer-role">Project Lead, Chronic Disease Management | 2021 - Present</span>
+        <p>
+          OCHF is a non-profit foundation running a malaria control program in rural Nigeria and a new free rural health centre.
+          My role has been helping organise the health centre and setting up the chronic disease division by creating clinical
+          guidelines for providers and educational materials for patients.
+          <a href="https://ruralhealth.ca/">Learn more</a>.
+        </p>
+        <iframe src="https://www.youtube.com/embed/GkwjbGX1_r0" title="OCHF Video" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+
+      <div class="volunteer-card">
+        <h4>UBC Bhutan Mental Health Project</h4>
+        <span class="volunteer-role">Research Study Team Member | 2021 - Present</span>
+        <p>
+          The goal is to better understand youth mental health in Bhutan, in partnership with a Bhutanese medical school
+          and UBC's Department of Medicine. My role includes writing the research protocol, ethics applications, survey design,
+          and leading the analysis.
+          <a href="https://ubcbhutanhealth.wordpress.com/">Learn more</a>.
+        </p>
+        <img src="images/bhutan.png" alt="Bhutan project" style="width: 100%; border-radius: 8px; object-fit: cover; max-height: 250px;">
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-transition white-to-brown"></div>
+
+<!-- ===== Contact ===== -->
+<section class="contact" id="contact">
+  <div class="container">
+    <h2 class="section-title reveal">Contact me</h2>
+    <hr class="section-divider">
+
+    <form class="contact-form reveal" id="contactForm" action="https://formspree.io/f/moqzwwnz" method="POST">
+      <input type="text" name="Name" placeholder="Name" required>
+      <input type="email" name="E-mail" placeholder="Email" required>
+      <input type="text" name="Subject" placeholder="Subject">
+      <textarea name="Message" placeholder="Message" required></textarea>
+      <button type="submit">Send</button>
+    </form>
+    <div class="contact-success reveal" id="contactSuccess">
+      <i class="fa-solid fa-circle-check"></i>
+      <h3>Thanks for reaching out!</h3>
+      <p>I'll get back to you as soon as I can.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Back to top -->
+<button class="back-to-top" id="backToTop" aria-label="Back to top">
+  <i class="fa-solid fa-arrow-up"></i>
+</button>
+
+<div class="section-transition brown-to-blue"></div>
+
+<!-- ===== Footer ===== -->
+<footer class="site-footer">
+  <p class="footer-name">Sean Harrigan</p>
+  <div class="footer-social">
+    <a href="https://orcid.org/0000-0001-6021-7402" aria-label="ORCiD"><i class="fa-brands fa-orcid"></i></a>
+    <a href="https://www.linkedin.com/in/sean-harrigan-8a281614a/" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+    <a href="https://github.com/seanharrigan" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+  </div>
+</footer>
+
+<!-- ===== CV Modal ===== -->
+<div class="modal-overlay" id="cvModal">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h3>Curriculum Vitae</h3>
+      <div class="modal-header-actions">
+        <a href="html/sean_harrigan_cv.pdf" download class="btn btn-primary-custom" style="padding: 8px 20px; font-size: 0.85rem;">
+          <i class="fa-solid fa-download"></i> Download PDF
+        </a>
+        <button class="modal-close" id="cvModalClose" aria-label="Close">&times;</button>
+      </div>
+    </div>
+    <div class="modal-body">
+      <iframe src="html/sean_harrigan_cv.pdf#toolbar=0&navpanes=0&view=FitH"></iframe>
+    </div>
+  </div>
+</div>
+
+<!-- ===== Scripts ===== -->
 <script>
+// Particles.js
 particlesJS("particles-js", {
-  "particles": {
-    "number": {
-      "value": 80,
-      "density": {
-        "enable": true,
-        "value_area": 800
-      }
+  particles: {
+    number: { value: 60, density: { enable: true, value_area: 900 } },
+    color: { value: "#8aaab8" },
+    shape: { type: "circle" },
+    opacity: { value: 0.35, random: false },
+    size: { value: 5, random: true },
+    line_linked: { enable: true, distance: 150, color: "#8aaab8", opacity: 0.15, width: 1 },
+    move: { enable: true, speed: 1.5, direction: "none", random: false, straight: false, out_mode: "out" }
+  },
+  interactivity: {
+    detect_on: "canvas",
+    events: {
+      onhover: { enable: true, mode: "grab" },
+      onclick: { enable: true, mode: "push" },
+      resize: true
     },
-    "color": {
-      "value": "#757474"
-    },
-    "shape": {
-      "type": "circle",
-      "stroke": {
-        "width": 0,
-        "color": "#000000"
-      },
-      "polygon": {
-        "nb_sides": 5
-      },
-      "image": {
-        "src": "img/github.svg",
-        "width": 100,
-        "height": 100
-      }
-    },
-    "opacity": {
-      "value": 0.5,
-      "random": false,
-      "anim": {
-        "enable": false,
-        "speed": 1,
-        "opacity_min": 0.1,
-        "sync": false
-      }
-    },
-    "size": {
-      "value": 8,
-      "random": true,
-      "anim": {
-        "enable": false,
-        "speed": 40,
-        "size_min": 0.1,
-        "sync": false
-      }
-    },
-    "line_linked": {
-      "enable": true,
-      "distance": 150,
-      "color": "#757474",
-      "opacity": 0.22,
-      "width": 1
-    },
-    "move": {
-      "enable": true,
-      "speed": 3,
-      "direction": "none",
-      "random": false,
-      "straight": false,
-      "out_mode": "out",
-      "attract": {
-        "enable": false,
-        "rotateX": 600,
-        "rotateY": 1200
-      }
+    modes: {
+      grab: { distance: 140, line_linked: { opacity: 0.6 } },
+      push: { particles_nb: 3 }
     }
   },
-  "interactivity": {
-    "detect_on": "canvas",
-    "events": {
-      "onhover": {
-        "enable": true,
-        "mode": "grab"
-      },
-      "onclick": {
-        "enable": true,
-        "mode": "push"
-      },
-      "resize": true
-    },
-    "modes": {
-      "grab": {
-        "distance": 140,
-        "line_linked": {
-          "opacity": 1
-        }
-      },
-      "bubble": {
-        "distance": 400,
-        "size": 40,
-        "duration": 2,
-        "opacity": 8,
-        "speed": 3
-      },
-      "repulse": {
-        "distance": 200
-      },
-      "push": {
-        "particles_nb": 4
-      },
-      "remove": {
-        "particles_nb": 2
-      }
-    }
-  },
-  "retina_detect": true,
-  "config_demo": {
-    "hide_card": false,
-    "background_color": "#b61924",
-    "background_image": "",
-    "background_position": "50% 50%",
-    "background_repeat": "no-repeat",
-    "background_size": "cover"
+  retina_detect: true
+});
+
+// Navbar scroll effect
+const navbar = document.getElementById('navbar');
+window.addEventListener('scroll', () => {
+  navbar.classList.toggle('scrolled', window.scrollY > 50);
+});
+
+// Mobile menu
+const menuToggle = document.getElementById('menuToggle');
+const navLinks = document.getElementById('navLinks');
+
+menuToggle.addEventListener('click', () => {
+  menuToggle.classList.toggle('active');
+  navLinks.classList.toggle('open');
+});
+
+navLinks.querySelectorAll('a').forEach(link => {
+  link.addEventListener('click', () => {
+    menuToggle.classList.remove('active');
+    navLinks.classList.remove('open');
+  });
+});
+
+// Scroll reveal
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) entry.target.classList.add('visible');
+  });
+}, { threshold: 0.1 });
+
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+// Timeline expand/collapse
+document.querySelectorAll('.timeline-item').forEach(item => {
+  item.addEventListener('click', (e) => {
+    // Don't toggle if clicking a link
+    if (e.target.tagName === 'A') return;
+    item.classList.toggle('expanded');
+  });
+});
+
+// Publication panels
+document.querySelectorAll('.pub-panel').forEach(panel => {
+  panel.addEventListener('click', function(e) {
+    if (e.target.tagName === 'A') return;
+    document.querySelectorAll('.pub-panel').forEach(p => p.classList.remove('active'));
+    this.classList.add('active');
+  });
+});
+
+// CV Modal
+function openCvModal(e) {
+  e.preventDefault();
+  document.getElementById('cvModal').classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+
+document.getElementById('cvModalClose').addEventListener('click', () => {
+  document.getElementById('cvModal').classList.remove('active');
+  document.body.style.overflow = '';
+});
+
+document.getElementById('cvModal').addEventListener('click', (e) => {
+  if (e.target === e.currentTarget) {
+    document.getElementById('cvModal').classList.remove('active');
+    document.body.style.overflow = '';
   }
+});
+
+// 2. Active nav highlighting
+const sections = document.querySelectorAll('section[id]');
+const navItems = document.querySelectorAll('.nav-links a');
+
+window.addEventListener('scroll', () => {
+  let current = '';
+  sections.forEach(section => {
+    const top = section.offsetTop - 150;
+    if (window.scrollY >= top) {
+      current = section.getAttribute('id');
+    }
+  });
+  navItems.forEach(link => {
+    link.classList.remove('active');
+    if (link.getAttribute('href') === '#' + current) {
+      link.classList.add('active');
+    }
+  });
+});
+
+// 3. Back to top
+const backToTop = document.getElementById('backToTop');
+window.addEventListener('scroll', () => {
+  backToTop.classList.toggle('visible', window.scrollY > 500);
+});
+backToTop.addEventListener('click', () => {
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+});
+
+// 5. Contact form success
+const contactForm = document.getElementById('contactForm');
+contactForm.addEventListener('submit', function(e) {
+  e.preventDefault();
+  const data = new FormData(this);
+  fetch(this.action, { method: 'POST', body: data, headers: { 'Accept': 'application/json' } })
+    .then(response => {
+      if (response.ok) {
+        contactForm.style.display = 'none';
+        document.getElementById('contactSuccess').classList.add('show');
+      }
+    });
+});
+
+// Tab navigation
+document.querySelectorAll('.tab-btn').forEach(btn => {
+  btn.addEventListener('click', function() {
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+    this.classList.add('active');
+    document.getElementById(this.dataset.tab).classList.add('active');
+  });
+});
+
+// SIR Model Simulation
+let sirChart = null;
+
+function runSIR() {
+  const R0 = parseFloat(document.getElementById('r0Slider').value);
+  const gamma = parseFloat(document.getElementById('gammaSlider').value);
+  const beta = R0 * gamma;
+  const N = 10000;
+  const days = 200;
+  const dt = 0.1;
+
+  let S = N - 10, I = 10, R = 0;
+  const sData = [], iData = [], rData = [], labels = [];
+
+  for (let t = 0; t <= days; t += dt) {
+    if (Math.abs(t - Math.round(t)) < dt / 2) {
+      labels.push(Math.round(t));
+      sData.push(S);
+      iData.push(I);
+      rData.push(R);
+    }
+    const dS = -beta * S * I / N * dt;
+    const dI = (beta * S * I / N - gamma * I) * dt;
+    const dR = gamma * I * dt;
+    S += dS; I += dI; R += dR;
+  }
+
+  document.getElementById('r0Value').textContent = R0.toFixed(1);
+  document.getElementById('gammaValue').textContent = gamma.toFixed(2);
+
+  const ctx = document.getElementById('sirChart');
+  if (!ctx) return;
+
+  if (sirChart) sirChart.destroy();
+
+  sirChart = new Chart(ctx, {
+    type: 'line',
+    data: {
+      labels: labels,
+      datasets: [
+        { label: 'Susceptible', data: sData, borderColor: '#93BFCF', backgroundColor: 'rgba(147,191,207,0.1)', fill: true, pointRadius: 0, borderWidth: 2, tension: 0.4 },
+        { label: 'Infected', data: iData, borderColor: '#c4532e', backgroundColor: 'rgba(196,83,46,0.1)', fill: true, pointRadius: 0, borderWidth: 2, tension: 0.4 },
+        { label: 'Recovered', data: rData, borderColor: '#A17A5A', backgroundColor: 'rgba(161,122,90,0.1)', fill: true, pointRadius: 0, borderWidth: 2, tension: 0.4 }
+      ]
+    },
+    options: {
+      responsive: true,
+      animation: { duration: 400 },
+      interaction: { mode: 'index', intersect: false },
+      plugins: { legend: { display: false }, tooltip: { callbacks: { label: ctx => ctx.dataset.label + ': ' + Math.round(ctx.parsed.y).toLocaleString() } } },
+      scales: {
+        x: { title: { display: true, text: 'Days', font: { size: 12 } }, grid: { display: false }, ticks: { maxTicksLimit: 10 } },
+        y: { title: { display: true, text: 'Population', font: { size: 12 } }, grid: { color: '#f0f0f0' }, ticks: { callback: v => v.toLocaleString() } }
+      }
+    }
+  });
+}
+
+document.getElementById('r0Slider')?.addEventListener('input', runSIR);
+document.getElementById('gammaSlider')?.addEventListener('input', runSIR);
+
+// Run on tab click
+document.querySelector('[data-tab="tab-epi"]')?.addEventListener('click', () => {
+  setTimeout(runSIR, 100);
 });
 </script>
 
-  <!-- Features -->
-
-  <div class="container-fluid" >
-
-
-    <section id="about" style="padding-bottom:0px">
-
-      <div class="about-me row justify-content-center" >
-        <div class="aboutme features-box col-lg-3 col-sm-3 col-xs-5" >
-            <img class='sean-img' src="images/sean-modified.png" alt="sean-photo" style="margin: auto; display:block; width:80%"> 
-        </div>
-
-        <div class="aboutme features-box col-lg-5 col-sm-10 col-xs-12">
-          <!--<i class="fa-solid fa-calculator fa-4x features-icon"></i> -->
-          <h3 style =" font-family: courier; font-size: 2em;">About me.</h3>
-          <hr >
-          <p class="features-text" style="text-align: justify; padding-left: 15px; padding-right: 15px;">  My name is Sean, and I am a Research 
-            Statistician at RainCity Analytics, a health outcomes and economics research company based in Vancouver, Canada. I lead projects focused 
-            on real-world evidence, systematic literature reviews and meta-analyses, and statistical analysis for safety and effectiveness outcomes, 
-            as well as regulatory and health technology assessment submissions across a range of disease areas, including cancer and rare diseases.
-            <br> 
-            <br> 
-            My background spans academia, public health, and industry, with roles at the BC Centre for Disease Control, UBC, and various global 
-            health initiatives. I have a passion for health research, epidemiology, statistical methods, and reproducible data science—particularly 
-            in data analysis, visualisation, and automation.
-           </p>
-
-            <a class="btn btn-info" style="color:white; font-weight: normal;" href="html/cv.html"> See my CV </a>
-        </div>
-
-        <!-- Skills section -->
-        <!--Desktop-->
-
-        <div class="row justify-content-center skills hidden-mobile">
-          <div class="features-box col-lg-2 col-md-6 hidden-mobile" style="margin-right: 50px; margin-left: 50px; font-size: 0.9em;">
-            <!--<i class="fa-regular fa-virus fa-4x features-icon"></i>-->
-            <i class="fa-solid fa-gears fa-4x features-icon"></i>
-            <h3 style =" font-family: courier; font-size: 1.5em;">Methodology.</h3>
-            <p class="features-text">In depth knowledge and practical experience in epidemiological research methods and academic writing</p>
-          </div>
-  
-          <div class="features-box col-lg-2 col-md-6 hidden-mobile" style="margin-right: 50px; margin-left: 50px; font-size: 0.9em;">
-            <i class="fa-solid fa-calculator fa-4x features-icon"></i>
-            <h3  style =" font-family: courier; font-size: 1.5em;">Statistics.</h3>
-            <p class="features-text">Statistical analyses for scientific studies, including regression, survival, mediation and causal based methods</p>
-          </div>
-  
-          <div class="features-box col-lg-2 col-md-6 hidden-mobile" style="margin-right: 50px; margin-left: 50px; font-size: 0.9em;">
-            <i class="fa-solid fa-code fa-4x features-icon"></i>
-            <h3 style =" font-family: courier; font-size: 1.5em;">Data science.</h3>
-            <p class="features-text">Data wrangling and visualisaiton, automated analytical pipelines, machine learning techniques</p>
-          </div>
-        </div>
-
-        <!--Mobile-->
-
-        <div class="row justify-content-center skills hidden-desktop" style="padding-top: 0px; padding-bottom: 0px;">
-          <div class="features-box col-lg-2 hidden-desktop" style="padding: 0px 25px 50px">
-            <i class="fa-regular fa-flask fa-4x features-icon"></i>
-            <h3  style =" font-family: courier; font-size: 1.5em;">Methodology.</h3>
-            <p class="features-text">In depth knowledge and practical experience in epidemiological research methods and academic writing</p>
-          </div>
-  
-          <div class="features-box col-lg-2 hidden-desktop" style="padding: 25px 50px">
-            <i class="fa-solid fa-calculator fa-4x features-icon"></i>
-            <h3  style =" font-family: courier; font-size: 1.5em;" >Statistics.</h3>
-            <p class="features-text">Statistical analyses for scientific studies, including regression, survival, mediation and causal based methods</p>
-          </div>
-  
-          <div class="features-box col-lg-2 hidden-desktop" style="padding: 25px 50px">
-            <i class="fa-solid fa-code fa-4x features-icon"></i>
-            <h3  style =" font-family: courier; font-size: 1.5em;" >Data science.</h3>
-            <p class="features-text">Data wrangling and visualisation, automated analytical pipelines and machine learning techniques</p>
-          </div>
-        </div>
-
-      <!-- <h4 class="features-title">Experience & education.</h4> --> 
-      
-      <div class="about-me row justify-content-center">
-        <h4 style="text-align:center">Experience</h4> 
-        <hr>
-        <p><br></p>
-        <div class="aboutme features-box col-lg-7  col-md-9">
-          <div class="accordion justify-content-md-center" id="accordionPanelsStayOpenExample">
-            
-            <div class="accordion-item">
-              <h2 class="accordion-header" id="panelsStayOpen-headingOne">
-                <button class="accordion-button btn-outline-dark" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
-                  Research Statistician - RainCity Analytics (2023 - present)
-                </button>
-              </h2>
-              <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show" aria-labelledby="panelsStayOpen-headingOne">
-                <div class="accordion-body" style="text-align: justify;">
-                  <p class = "aboutme-text">  
-                    <a href="https://www.raincity-analytics.com//">RainCity Analytics</a> specialises in health economics and outcomes research across a diverse range of disease areas. As a Research Statistician, I work with a variety of clients, 
-                    including pharmaceutical companies and global health organizations such as the WHO. My role spans various methodologies, from conducting systematic literature reviews (SLRs) 
-                    and network meta-analyses (NMAs) to exploratory research in experimental and observational studies. In addition to leading the design and implementation of analytical frameworks,
-                    I am involved in academic writing of abstracts, reports, and manuscripts, and have served as the project lead for both systematic literature reviews and observational research studies.
-                    <br> <br>
-                    Some of my key responsibilities include:
-                  </p>
-                  <ul class="job-list aboutme-text" stlye="list-style-type: circle;">
-                    <li>Lead and contribute to SLRs, meta-analyses, and observational research across a range of disease areas including oncology and rare diseases</li>
-                    <li>Serve as project lead on multiple research studies, managing timelines, deliverables, and client communication</li>
-                    <li>Design and implement analytical frameworks for real-world evidence (RWE) generation and health outcomes research</li>
-                    <li>Conduct statistical analyses in R, including meta-analysis, survival analysis, and modelling of clinical outcomes</li>
-                    <li>Author and contribute to scientific manuscripts, abstracts, and regulatory reports for HTA and peer-reviewed publication</li>
-                  </ul>
-
-                  <div class="about-me row justify-content-center">
-                    <div class="aboutme features-box col-lg-3  col-md-3 ">
-                      <img class='sean-img' src="images/raincity.png" alt="sean-photo" width = "30%">
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            
-            <div class="accordion-item">
-              <h2 class="accordion-header" id="panelsStayOpen-headingOne">
-                <button class="accordion-button collapsed btn-outline-dark" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
-                  Epidemiologist - UBC / BC CDC  (2021 - 2023)
-                </button>
-              </h2>
-              <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse collapse" aria-labelledby="panelsStayOpen-headingOne">
-                <div class="accordion-body" style="text-align: justify;">
-                  <p class = "aboutme-text">  
-                    I conducted research related to COVID-19 variants of concern (VOC) severity at the 
-                    <a href="https://a4ph.med.ubc.ca/projects-and-initiatives/bc-covid-19-cohort/">BC Centre for Disease Control (BCCDC)</a>. 
-                    Our work used large administrative databases to understand how these VOCs impact disease severity. Specifically, my 
-                    projects focused on VOC severity and how social determinants of health (e.g., income, education) can affect disease
-                    severity.
-                    <br> <br>
-                    My role focuseded on the design and methodology of research projects, data and statistical analysis, and scientific writing. This included: 
-                  </p>
-                  <ul class="job-list aboutme-text" stlye="list-style-type: circle;">
-                    <li>Conceptualising and conducting all aspects of epidemiologic research studies (i.e. hypotheses, study population, methodology, analysis, etc.) </li>  <br>
-                    <li>Leading the statistical analysis in R: this includes exploratory analyses as well as creating data analysis pipelines from tidying raw data, applying a causal 
-                      framework to analysis and modelling severity by using more complex analyses like propensity scores, inverse probability treatment weights and mediaion techniques </li> <br>
-                    <li>Leading the scientific writing of <a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4053482">manuscripts</a> 
-                      for internal use and for publication in scientific journals</li>
-                  </ul>
-
-                  <div class="about-me row justify-content-center">
-                    <div class="aboutme features-box col-lg-3  col-md-3 ">
-                      <img class='sean-img' src="images/bccdc.png" alt="sean-photo" width = "30%">
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            
-            <div class="accordion-item">
-              <h2 class="accordion-header" id="panelsStayOpen-headingTwo">
-                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseTwo" aria-expanded="false" aria-controls="panelsStayOpen-collapseTwo">
-                  Researcher and Primary Data Analyst - UBC & VCH  (2020 - 2021)
-                </button>
-              </h2>
-              <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingTwo">
-                <div class="accordion-body" style="text-align: justify;">
-                  <p class="aboutme-text">  
-                    Our research was concentrated in occupational health and safety oh health workers, specifically in relation to COVID-19. During this role, 
-                    I worked on two main projects: Physician Occupational Health and Safety (POSH) Unit in Vancouver Coastal Health and with the 
-                    WHO Collaborating Centre at UBC.  <br> <br>
-                    POSH focused on providing a primary surveillance database for all physicans in Vancouver at the 
-                    start of the pandemic. The was the first of its kind in the city and helped keep doctors safe during the beginning stages of the pandemic.
-                    The WHO collaborating Centre project was more focused on research. We collaborated with WHO teams in Siwtzerland to analyse a study of 
-                    international healthworkers to better understand their perception of occupational safety during the pandmic.
-                  </p>
-                  <ul class="job-list aboutme-text" stlye="list-style-type: circle;">
-                    <li><strong>WHO Collaborating Centre:</strong> 
-                      <ul class="job-list aboutme-text" stlye="list-style-type: circle;" >  
-                        <li>
-                          I co-lead a <a href="https://bmjopen.bmj.com/content/12/10/e064804">study</a> in collaboration with the World Health Organization (WHO) which 
-                          surveyed health care workers from around world about health risk and protection measures in the workplace during the pandemic, and understood 
-                          how this was related to econimc indicators.
-                        </li>
-                        <li>Conceptualisaiton of study and perfomed data analysis</li>
-                        <li>Collaboration with international team members</li>
-                      </ul>  
-                    </li>  <br>
-                    <li><strong>POSH: </strong> Created a database of all physicians to collect data on COVID-19 exposures and test results to monitor physicians/healthcare workers in Vancouver
-                      throughout the pandemic.
-                      <ul>
-                        <li>Automated daily surveillance data from mlutiple hospitals to streamline data collection</li>
-                        <li>Created weekly reports summarising COVID-19 infections and symptoms in the physcian population in Vancouver</li>
-                      </ul>
-                    </li>
-                  </ul>
-
-                  <div class="about-me row justify-content-md-center">
-                    <div class="aboutme features-box col-lg-3 col-md-3 ">
-                      <img class='sean-img' src="images/ubc.png" alt="ubc-photo" width = "30%">
-                  </div> 
-                  <div class="aboutme features-box col-lg-3 col-md-3">
-                    <img class='sean-img' src="images/vch.png" alt="vch-photo" width = "30%">
-                </div>                
-                </div>
-              </div>
-            </div>
-            </div>
-
-            <div class="accordion-item">
-              <h2 class="accordion-header" id="panelsStayOpen-headingThree">
-                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseThree" aria-expanded="false" aria-controls="panelsStayOpen-collapseThree">
-                  Research Assistant - UBC SPPH  (2019 - 2021)
-                </button>
-              </h2>
-              <div id="panelsStayOpen-collapseThree" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingThree">
-                <div class="accordion-body" style="text-align: justify;">
-                  <p class="aboutme-text">  
-                    Our research group studied how different characteristics of the urban environment may be associated with cancer risk, physical 
-                    activity and obesity. We used British Columbia’s largest cohort, the British Columbia Generations Project, to 
-                    study epidemiological links between how different measures of the urban environment, like walkability, green 
-                    space and air pollution impact cancer risks and health. We also studied how the built environment can affect 
-                    cancer-causing behaviours. 
-                    <br><br> 
-                    My role as a research assistant was to conduct literature reviews and research in the 
-                    field, and contribute to the statistical analysis and writing academic papers.
-                  </p>
-                  <ul class="job-list aboutme-text" stlye="list-style-type: circle;">
-                    <li>Conducting analyses on a large prospective cohort</li>  <br>
-                    <li>Scientific writing, including abstracts, literature reviews, reports and manuscripts</li> <br>
-                    <li>Completion of my <a href="https://open.library.ubc.ca/soa/cIRcle/collections/ubctheses/24/items/1.0396872"> Master's Thesis</a> 
-                      which analysed the association between breast cancer risk related to the built environement (namely, traffic-related air pollution, 
-                      residential greenness and walkability) in post-menopausal women. My thesis was recognised by a number of significant awards listed
-                      in the <a href="#awards">recognition seciton</a> below.
-                  </ul>
-
-                  <div class="about-me row justify-content-center">
-                    <div class="aboutme features-box col-lg-3 col-md-3">
-                      <img class='sean-img' src="images/ubc.png" alt="sean-photo" width="30%">
-                  </div>                
-                </div>
-              </div>
-            </div>
-            </div>
-
-            <div class="accordion-item">
-              <h2 class="accordion-header" id="panelsStayOpen-headingFour">
-                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseFour" aria-expanded="false" aria-controls="panelsStayOpen-collapseFour">
-                  Research Associate - Broadstreet HEOR  (2017 - 2019)
-                </button>
-              </h2>
-
-              <div id="panelsStayOpen-collapseFour" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingFour">
-                <div class="accordion-body" style="text-align: justify;">
-                  <p class="aboutme-text">  
-                    During my time as a research associate at <a href="https://www.broadstreetheor.com">Broadstreet Health Economic and 
-                    Outcomes Research</a>, I gained in-depth experience in the design and execution of 
-                    various types of epidemiological studies with a focus on systematic reviews and meta-analyses. My research experience 
-                    included co-leading a systematic review on lysosomal acid lipase deficiency and have co-authored a meta-analysis 
-                    published in the Journal of Managed Care Pharmacy.
-                  </p>
-                  <ul class="job-list aboutme-text" stlye="list-style-type: circle;">
-                    <li>Conducting a systematic literature review and <a href="https://link.springer.com/article/10.1007/s40266-020-00792-9">network meta-analysis</a>  
-                      from beginning to end, including abstract review and data extraction</li>  <br>
-                    <li>Active participation in team meetings with pharmaceutical clients in relation to the research projects</li> <br>
-                    <li>Since this position, I have continued my education in the feild of HEOR, taking short courses and certificates in:</li> <br>
-                    <ul>
-                      <li>Decision modeling for Health Economic Evaulation</li> 
-                      <li>Meta-anlaysis concepts and analysis</li> 
-                    </ul>
-                  </ul>
-
-                  <div class="about-me row justify-content-center">
-                    <div class="aboutme features-box col-lg-3 col-md-3">
-                      <img  src="images/Broadstreet_logo.png" href="https://www.broadstreetheor.com" 
-                      alt="broadstreet-photo" width = "30%">
-                    </div>
-                  </div>               
-                 </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-
-      <!---- <h2 class="timeline-title">Education </h2> ---->
-      <!-- Timeline for Desktop devices -->
-      <div class="timeline row hide-if-small-screen hidden-mobile" style="padding-top: 5%; padding-bottom: 0%">
-        <h4 class="hidden-mobile" style="text-align:center" >Education</h4> 
-        <hr class="hidden-mobile">
-        <p><br class="hidden-mobiles"></p>
-        <div class="col-lg-12 text-center hidden-mobile ">
-          <svg width="1000" height="100">
-            <line x1="0" y1="50" x2="1000" y2="50" style="stroke:#F8CBA6;; stroke-width:1.5" />
-
-            <circle cx="150" cy="50" r="10" stroke="#f8f9fa" stroke-width="6" fill="#93BFCF" />
-            <text text-anchor="middle" x="150" y="80" fill="black">2019</text>
-            <text font-size="13" text-anchor="middle" x="70" y="10" fill="black">BSc in Biology</text>
-            <text font-size="13" text-anchor="middle" x="70" y="30" fill="black">Minor in Statistics</text>
-            <text style="font-style: italic" font-size="13" text-anchor="middle" x="70" y="80" fill="#808080">UVic</text>
-
-            <circle cx="450" cy="50" r="10" stroke="#f8f9fa" stroke-width="6" fill="#93BFCF" />
-            <text text-anchor="middle" x="450" y="80" fill="black">2021</text>
-            <text font-size="13" text-anchor="middle" x="300" y="10" fill="black">Masters Epidemiology,</text>
-            <text font-size="13" text-anchor="middle" x="300" y="30" fill="black">Population and Public Health</text>
-            <text style="font-style: italic" font-size="13" text-anchor="middle" x="300" y="80" fill="#808080">UBC SPPH</text>
-
-            <circle cx="650" cy="50" r="10" stroke="#f8f9fa" stroke-width="6" fill="#93BFCF" />
-            <text text-anchor="middle" x="650" y="80" fill="black">2022</text>
-            <text font-size="13" text-anchor="middle" x="550" y="10" fill="black">Certificate in Data Science,</text> 
-            <text font-size="13" text-anchor="middle" x="550" y="30" fill="black">Programming in Python</text> 
-            <text style="font-style: italic" font-size="13" text-anchor="middle" x="550" y="80" fill="#808080">UBC</text>
-
-            <circle cx="850" cy="50" r="10" stroke="#f8f9fa" stroke-width="6" fill="#93BFCF" />
-            <text text-anchor="middle" x="850" y="80" fill="black">2023</text>
-            <text font-size="13" text-anchor="middle" x="750" y="10" fill="black">Decision Modeling for Health</text>
-            <text font-size="13" text-anchor="middle" x="750" y="30" fill="black">Economic Evaluation</text>
-            <text style="font-style: italic" font-size="13" text-anchor="middle" x="750" y="80" fill="#808080">University of York</text>
-
-            <text font-size="13" text-anchor="middle" x="930" y="10" fill="black">Certificate in Machine  </text>
-            <text font-size="13" text-anchor="middle" x="930" y="30" fill="black">Learning & AI</text>
-            <text style="font-style: italic" font-size="13" text-anchor="middle" x="930" y="80"
-              fill="#808080">U of T</text>
-
-          </svg>
-        </div>
-      </div>
-
-      <!-- Timeline for Mobile devices -->
-      <div class="timeline row hide-if-small-screen hidden-desktop" style="padding-top: 5%; padding-bottom: 0%">
-        <h4 class="hidden-desktop" style="text-align:center" >Education</h4> 
-        <hr class="hidden-desktop">
-        <p><br class="hidden-desktop"></p>
-        <div class="col-lg-12 text-center hidden-desktop">
-          
-          <svg width="400" height="375">
-
-            <line x1="150" y1="0" x2="150" y2="60" style="stroke:#F8CBA6; stroke-width:2.5" />
-            <circle cx="150" cy="75" r="10" stroke="#f8f9fa" stroke-width="6" fill="#93BFCF" />
-            <text text-anchor="middle" x="115" y="80" fill="black">2019</text>
-            <text font-size="13" text-anchor="left" x="175" y="25" fill="black">BSc in Biology</text>
-            <text font-size="13" text-anchor="left" x="175" y="45" fill="black">Minor in Statistics</text>
-            <text style="font-style: italic" font-size="13" text-anchor="right" x="100" y="35" fill="#808080">UVic</text>
-        
-            <line x1="150" y1="90" x2="150" y2="140" style="stroke:#F8CBA6; stroke-width:2.5" />
-            <circle cx="150" cy="155" r="10" stroke="#f8f9fa" stroke-width="6" fill="#93BFCF" />
-            <text text-anchor="middle" x="115" y="160" fill="black">2021</text>
-            <text font-size="13" text-anchor="left" x="175" y="120" fill="black">MSc in Epidemiology</text>
-            <text style="font-style: italic" font-size="13" text-anchor="right" x="100" y="120" fill="#808080">UBC</text>
-        
-            <line x1="150" y1="170" x2="150" y2="220" style="stroke:#F8CBA6; stroke-width:2.5" />
-            <circle cx="150" cy="235" r="10" stroke="#f8f9fa" stroke-width="6" fill="#93BFCF" />
-            <text text-anchor="middle" x="115" y="240" fill="black">2022</text>
-            <text font-size="13" text-anchor="left" x="175" y="190" fill="black">Certificate in Data Science,</text>
-            <text font-size="13" text-anchor="left" x="175" y="210" fill="black">Programming in Python</text>
-            <text style="font-style: italic" font-size="13" text-anchor="right" x="100" y="200" fill="#808080">UBC</text>
-        
-            <line x1="150" y1="250" x2="150" y2="300" style="stroke:#F8CBA6; stroke-width:2.5" />
-            <circle cx="150" cy="315" r="10" stroke="#f8f9fa" stroke-width="6" fill="#93BFCF" />
-            <text text-anchor="middle" x="115" y="320" fill="black">2023</text>
-            <text font-size="13" text-anchor="left" x="175" y="270" fill="black">Decision Modeling in Health</text>
-            <text font-size="13" text-anchor="left" x="175" y="290" fill="black">Economic Evaluation</text>
-            <text style="font-style: italic" font-size="13" text-anchor="right" x="95" y="270" fill="#808080">York</text>
-            <text style="font-style: italic" font-size="13" text-anchor="right" x="77" y="290" fill="#808080">University</text>
-        
-        
-            <line x1="150" y1="330" x2="150" y2="380" style="stroke:#F8CBA6; stroke-width:2.5" />
-            <text font-size="13" text-anchor="left" x="175" y="350" fill="black">Certificate in Machine</text>
-            <text font-size="13" text-anchor="left" x="175" y="370" fill="black">Learning and AI</text>
-            <text style="font-style: italic" font-size="13" text-anchor="right" x="100" y="360" fill="#808080">U of T</text>
-        
-        
-          </svg>
-        </div>
-      </div>
-
-
-
-    </section>
-  </div>
-
-
-
-<!-- Sliding deck --> 
-    </section>
-    
-    <div class="transition-white-blue" ></div>
-
-    <section id="cards">
-      <div><h3 style="padding-top: 2%;  text-align: center; color: grey; font-family: courier; font-size: 2em;">Publications</h3></div>
-      <hr>
-      <div class="about-me row justify-content-center" >
-        <div class="code-text col-lg-6 col-md-8" style = "padding-left: 40px; padding-right: 40px; text-align:justify; font-family: 'Montserrat', sans-serif">
-          <p>I have co-authored several publications on a wide array of topics including COVID-19 variant severity, breast cancer risk, 
-            and drug effecivess. In many of these analyses I am the first author, and led the analysis and writing.
-            <br>
-            <br>
-          </p>
-          <p style="text-align: center">
-            Check out my CV for a full list of my publicaitons. 
-            <br><br>
-            <a class="btn btn-info" style="color:white; font-weight: normal;" href="html/cv.html"> View all publications </a>
-          </p>
-          
-
-        </div>
-      </div>
-      <!-- Desktop version -->
-      <div class="box flex hidden-mobile">
-          <div class="container-cards-desktop hidden-mobile">
-            <div class="panel active" style="background-image: url('./images/cid.png')">
-              <h3><a href="https://academic.oup.com/cid/article/76/3/e18/6679248?rss=1" style="color: white;">View</a></h3>
-            </div>
-            <div class="panel" style="background-image: url('./images/ubc-thesis.png')">
-              <h3><a href="https://open.library.ubc.ca/collections/ubctheses/24/items/1.0396872" style="color: white;">View</a></h3>
-            </div>
-            <div class="panel" style="background-image: url('./images/bmj.png')">
-              <h3><a href="https://bmjopen.bmj.com/content/12/10/e064804" style="color: white;">View</a></h3>
-            </div>
-            <div class="panel" style="background-image: url('./images/ijid.png')">
-              <h3><a href="https://www.ijidonline.com/article/S1201-9712(22)00639-7/fulltext" style="color: white;">View</a></h3>
-            </div>
-            <div class="panel" style="background-image: url('./images/springer.png')">
-              <h3><a href="https://link.springer.com/article/10.1007/s40266-020-00792-9" style="color: white;">View</a></h3>
-            </div>
-          </div>
-        </div>
-
-        <!-- Mobile version -->
-
-        <div class="box flex hidden-desktop">
-          <div class="container-cards-mobile hidden-desktop">
-            <div class="panel active" style="background-image: url('./images/cid-mobile.png')">
-              <h3><a href="https://academic.oup.com/cid/article/76/3/e18/6679248?rss=1" style="color: white;">View</a></h3>
-            </div>
-            <div class="panel" style="background-image: url('./images/ubc-thesis-mobile.png')">
-              <h3><a href="https://open.library.ubc.ca/collections/ubctheses/24/items/1.0396872" style="color: white;">View</a></h3>
-            </div>
-            <div class="panel" style="background-image: url('./images/bmj-mobile.png')">
-              <h3><a href="https://bmjopen.bmj.com/content/12/10/e064804" style="color: white;">View</a></h3>
-            </div>
-            <div class="panel" style="background-image: url('./images/ijid-mobile.png')">
-              <h3><a href="https://www.ijidonline.com/article/S1201-9712(22)00639-7/fulltext" style="color: white;">View</a></h3>
-            </div>
-            <div class="panel" style="background-image: url('./images/springer-mobile.png')">
-              <h3><a href="https://link.springer.com/article/10.1007/s40266-020-00792-9" style="color: white;">View</a></h3>
-            </div>
-          </div>
-        </div>
-
-        <p style="text-align: center; color: grey; padding-top: 3%;;">
-          Visit my ORCiD below. 
-          <br><br>
-          <a href="https://orcid.org/0000-0001-6021-7402" class="footer fa-4x fa-brands fa-orcid" style="padding-right: 1%; padding-left: 1%; color: grey"></a>
-        </p>
-      
-        
-      <script src="js/cards.js"></script>
-
-    </section>
-
-    <div class="transition-blue-white"></div>
-
-    <!--Code div-->
-    <section id="code">
-      <div>
-        <div class="wrapper"  style="height:100px">
-          <div class="typing-demo">
-            {r, code-div}
-          </div>
-      </div>
-      <div class="about-me row justify-content-center" >
-        <div class="code-text col-lg-6 col-md-8" style = "padding-left: 40px; padding-right: 40; font-family: 'Montserrat', sans-serif">
-          <p>The section below will provides a brief example of my programming skillset using publicly available data taken from the 
-            <a style = "text-decoration: none !important;" href="https://open.canada.ca/data/en/dataset/261c32ab-4cfd-4f81-9dea-7b64065690dc">Government of Canada</a> webiste.
-            In this example I will walk through data preparation, data visualisation and reporting techniques, and provide three deliverables: 
-            <ol >
-              <li> A <span style="text-decoration: underline;">data visualisation</span> of COVID-19 in Canada in 2021</li>
-              <li> A <span style="text-decoration: underline;">dashboard</span> of COVID-19 in Canada over the pandemic</li>
-              <li> A <span style="text-decoration: underline;">report</span> of COVID-19 in Canada in 2021</li>
-            </ol>
-
-          </p>
-        </div>
-      </div>
-      <div class="site-wrapper">
-        <section class="tabs-wrapper">
-          <div class="tabs-container">
-            <div class="tabs-block">
-              <div class="tabs">
-                <input type="radio" name="tabs" id="tab1" checked="checked" />
-                <label for="tab1"> <span><i class="fa-solid fa-chart-pie"></i></span> <span style="padding-left:10px">Data Vis</span></label>
-                <div class="tab">
-                  <div class="typing-demo-vis">
-                    > library(ggplot2) 
-                  </div>
-                    <p class="code-text"  style="padding: 20px; text-align: justify">
-                      Data can be complicated to understand, therefore being able to provide concise and easy to understand data visualisations is key 
-                      to data exploration and in final manuscripts and deliverables. I have a passion for creating appealing and informative 
-                      figures to better help interpret the data.
-                      <br>
-                      <br> 
-                      The COVID-19 pandemic produced large amounts of data. In the example figure below, I tried to summarise the pandemic from 
-                      a Canadian perspective in a single figure. I have created this figure below using ggplot2 in R. This was figure was made using public data from 
-                      <a href="https://open.canada.ca/data/en/dataset/261c32ab-4cfd-4f81-9dea-7b64065690dc">Government of Canada</a>.
-                      </p>
-                      <div class="container">
-                        <div class="row">
-                          <div class="col text-center">
-                            <p>
-                            <a class="btn btn-info" style="color:white" href="r/covid_analysis/covid-analysis.html">
-                              See code
-                            </a>
-                            <br>
-                            </p>
-                            </div>
-                          </div>
-                        </div>
-                      <img src="images/epi-plot-full.png" alt="" class="card-img-top" style ="padding-left: 20px; padding-right: 20px ">
-                </div>
-      
-                <input type="radio" name="tabs" id="tab2" />
-                <label for="tab2"><span><i class="fa-solid fa-chart-line"></i></span> <span style="padding-left:10px">Dashboard</span></label>
-                <div class="tab">
-                  <div class="typing-demo-pkg">
-                    > library(shiny)
-                  </div>
-                  <p class="code-text"  style="padding: 20px; text-align: justify">
-                    Sometimes a static image isn't enough to tease apart the data. In this case an interactive dahsboard may be 
-                    the solution. I enjoy bringing my figures to life by creating web app dashboards using Shiny in R.
-                    <br>
-                    <br>
-                    The dahsboard below was created in R using Shiny and was styled using CSS. The dashboard allows the user to
-                    look at infections, vaccination and mortality rate by specific province and year. Again, the data was taken from 
-                    the <a href="https://open.canada.ca/data/en/dataset/261c32ab-4cfd-4f81-9dea-7b64065690dc">Government of Canada</a> website.
-                  </p>
-                  <div class="container">
-                    <div class="row">
-                      <div class="col text-center">
-                        <p>
-                          <a class="btn btn-info" style="color:white" href="https://qg2ap2-sean-harrigan.shinyapps.io/covid_dashboard/?_ga=2.244017029.1867657955.1677176432-1345087095.1677176432">
-                            Visit dashboard
-                          </a>
-                          <br>
-                        </p>
-                        </div>
-                      </div>
-                    </div>
-                    <iframe height="850" width="100%" frameborder="no" src="https://qg2ap2-sean-harrigan.shinyapps.io/covid_dashboard/?_ga=2.244017029.1867657955.1677176432-1345087095.1677176432"> </iframe>
-                </div>
-      
-                <input type="radio" name="tabs" id="tab3" />
-                <label for="tab3"><span> <i class="fa-solid fa-pencil"></i></span> <span style="padding-left:10px">Reporting</span></label>
-                <div class="tab">
-                  <div class="typing-demo-render-mob" style = "padding-left: 10px;">
-                    > render() 
-                  </div>
-                    <p class="code-text" style="padding: 20px; text-align: justify">
-                      Analysis is only one aspect of good research. The other important aspect is being able to commucate the results effectively.
-                      When working on a project, I focus on building an efficient workflow with the final product being an automated report / 
-                      manuscript to easily share the results with colleagues. This allows small changes to the study population inclusion criteria  
-                      or statistical anlayses to be easily implemented and to create an updated report. <br><br>
-                    </p>
-                    <div class="container">
-                      <div class="row">
-                        <div class="col text-center">
-                          <p>
-                            <a class="btn btn-info" style="color:white" href="r/covid_analysis/covid_manuscript.html">
-                              View report
-                            </a>
-                            <br>
-                          </p>
-                          </div>
-                        </div>
-                      </div>
-                    <iframe height="850" width="100%" frameborder="no" src="r/covid_analysis/covid_manuscript.html"> </iframe>
-      
-                </div>
-      
-                <input type="radio" name="tabs" id="tab4" />
-                <label for="tab4"><span><i class="fa-solid fa-code"></i></span> <span style="padding-left:10px">Languages</span></label>
-                <div class="tab">
-
-                  <p class="code-text" style="padding: 5px; text-align: justify;">
-                    I have a passion for coding and using a variety of tools to accomplish my work efficiently.
-                    I have experience with a variety of languages and have used them in many projects, 
-                    but my language of choice for analysis is R. To me, <strong>reproducibility</strong> is key, so optimising my
-                    code and workflow is always a priority. 
-                  </p>
-      
-                  <div class="styled-div hidden-desktop">
-                                      
-                    <div class="row">
-                        <div class="col">
-                          <div class="container">
-                            <div class="row">
-                              <div class="col-6">
-                                <p style="color:#A17A5A;"> <strong>R</strong> <br><i>(Exprienced)</i></p> 
-                              </div>
-                              <div class="col-6">
-                                <p style="color:#A17A5A; text-align: right;"> <i class="fa-brands fa-2x fa-r-project"></i>  </p>
-                              </div>
-                            </div>
-                          </div>
-                          <p style="color:grey; text-align: justify">
-                            I work in R on a daily basis in my current role, exploring data, running analyses and modelling. 
-                            I enjoy learning new things in R and implementing them in my work, whether that's in full automated 
-                            mansucripts using Rmarkdown, creating functions to run complex analyses, or creating informative 
-                            visualisations.
-                          </p>
-                          <ul style="color:grey">
-                            <li>Data manipulation and wranngling</li>
-                            <li>Statistical and epidemiologic analysis</li>
-                            <li>Skilled at data visualisaiton and figure creation for manuscritps</li>
-                            <li>Dashboards using Shiny</li>
-                            <li>Creating R packages for work optimsation</li>
-                            <li>Generating full reports and manuscripts from analysis pipelines</li>
-                          </ul>
-                          <br>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col">
-                          <div class="container">
-                            <div class="row">
-                              <div class="col-6">
-                                <p style="color:#A17A5A;"> <strong>Python</strong> <br> <i>(Intermediate)</i></p>
-                              </div>
-                              <div class="col-6">
-                                <p style="color:#A17A5A; text-align: right;"> <i class="fa-brands fa-2x fa-python"></i>  </p>
-                              </div>
-                            </div>
-                          </div>
-                          <p style="color:grey">
-                            I have worked in Python during the Certificate Programs in Data Science at UBC and Machine Learning
-                            Artificial Intelligence at U of T. In both of these courses I completed many analyses in Jupyter Notebooks
-                            and Google Collab.
-                            <ul style="color:grey">
-                              <li>Experience in data science, data manipulation and wrangling using Pandas</li>
-                              <li>Data visualisation using Altair</li>
-                              <li>
-                                Proficient in machine learning analyses using Scikit-Learn
-                                including supervised and unsupervised, neural networks, etc. 
-                              </li>
-                            </ul>
-                            <br>
-                          </p>
-                        </div>
-                    </div>
-                    <div class="row">
-                      <div class="col"> 
-                        <div class="container">
-                          <div class="row">
-                            <div class="col-6">
-                              <p style="color:#A17A5A;"> <strong>HTML / CSS</strong> <br> <i>(Intermediate)</i></p>
-                            </div>
-                            <div class="col-6">
-                              <p style="color:#A17A5A; text-align: right;"> <i class="fa-brands fa-2x fa-html5"></i>  </p>
-                            </div>
-                          </div>
-                        </div>                        <p style="color:grey">
-                          I have experince using HTML and CSS in designing this website and applying these skills to create 
-                          visually appealing Shiny dashboards and HTML output for automated reports using Rmarkdown. 
-                        </p>
-                          <ul style="color:grey">
-                            <li>Knowledge in creating basic website layout content</li>
-                            <li>Use of CSS styling to create viusally apealing products</li>
-                            <li>Use of Bootstrap to create nice loooking HTML layouts</li>
-                          </ul>
-                          <br>
-                      </div>
-                    </div>
-                    <div class="row">
-                      <div class="col">
-                        <div class="container">
-                          <div class="row">
-                            <div class="col-6">
-                              <p style="color:#A17A5A;"> <strong>Command line / Bash</strong> <br> <i>(Intermediate)</i></p>
-                            </div>
-                            <div class="col-6">
-                              <p style="color:#A17A5A; text-align: right;"> <i class="fa-brands fa-2x fa-terminal"></i>  </p>
-                            </div>
-                          </div>
-                        </div>                        <p style="color:grey">
-                          Use of command line to implement version control, navigating directories and and running automated 
-                          analysis pipelines using Make.
-                        </p>
-                        <ul style="color:grey">
-                          <li>Knowledgein Bash to navigate directories, create </li>
-                          <li>Using Git version control </li>
-                          <li>Use of Make and Sankemake as a workflow organisation to 
-                            automate analysis pipelines
-                          </li>
-                        </ul>
-                        <br>
-                      </div>
-                    </div>
-                    <div class="row">
-                      <div class="col">
-                        <div class="container">
-                          <div class="row">
-                            <div class="col-6">
-                              <p style="color:#A17A5A;"> <strong>SQL</strong> <br> <i>(Basic)</i></p>
-                            </div>
-                            <div class="col-6">
-                              <p style="color:#A17A5A; text-align: right;"> <i class="fa-brands fa-2x fa-database"></i>  </p>
-                            </div>
-                          </div>
-                        </div>                        <p style="color:grey">
-                          Use of SQL to query large databases
-                        </p>
-                        <ul style="color:grey">
-                          <li>Using SQL to filter, select and join datasets to import
-                            into R for analyses </li>
-                        </ul>
-                      </div>
-                    </div>
-
-                  </div>
-
-                  <table class="styled-table hidden-mobile">
-                    <thead>
-                        <tr>
-                            <th>Language</th>
-                            <th>Experience</th>
-                        </tr>
-                    </thead>
-                    <tbody class="code-text" >
-                        <tr>
-                            <td><i class="fa-brands fa-2x fa-r-project" style="color:#A17A5A;"></i> <br> <br> R<br> <i>(Experienced)</i></td>
-                            <td>
-                              <p>
-                                I worked in R on a daily basis in my current role, exploring data, running analyses and modelling. 
-                                I enjoy learning new things in R and implementing them in my work, whether thats in full automated 
-                                mansucripts using Rmarkdown, creating functions to run complex analyses, or creating infomrative 
-                                visualisations.
-                              </p>
-                              <ul>
-                                <li>Data manipulation and wranngling</li>
-                                <li>Statistical and epidemiologic analysis</li>
-                                <li>Skilled at data visualisaiton and figure creation for manuscritps</li>
-                                <li>Dashboards using Shiny</li>
-                                <li>Creating R packages for work optimsation</li>
-                                <li>Generating full reports and manuscripts from analysis pipelines</li>
-                              </ul>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td> <i class="fa-brands fa-2x fa-python" style="color:#A17A5A;"></i> <br><br> Python <br> <i>(Intermediate)</i></td>
-                            <td>
-                              <p>I have worked in Python during the Certificate Programs in Data Science at UBC and Machine Learning
-                                Artificial Intelligence at U of T. 
-                                <ul>
-                                  <li>Experience in data science, data manipulation and wrangling using Pandas</li>
-                                  <li>Data visualisation using Altair</li>
-                                  <li>
-                                    Proficient in machine learning analyses using Scikit-Learn
-                                     including supervised and unsupervised, neural networks, etc. 
-                                  </li>
-                                </ul>
-                              </p>
-                            </td>
-                        </tr>
-                        <tr>
-                          <td><i class="fa-brands fa-2x fa-html5" style="color:#A17A5A;"></i> <br> <br> HTML / CSS <br> <i>(Intermediate)</i> </td>
-                          <td> 
-                            <p>
-                              I have experince using HTML and CSS in designing this website and applying these skills to create 
-                              visually appealing Shiny dashboards and HTML output for automated reports using Rmarkdown. 
-                            </p>
-                              <ul>
-                                <li>Knowledge in creating basic website layout content</li>
-                                <li>Use of CSS styling to create viusally apealing products</li>
-                                <li>Use of Bootstrap to create nice loooking HTML layouts</li>
-                              </ul>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td> <i class="fa-solid fa-2x fa-terminal" style="color:#A17A5A;"></i> <br> <br> Command line /Bash <br><i>(Intermediate)</i></td>
-                          <td>
-                            <p>
-                              Use of command line to implement version control, navigating directories and and running automated 
-                              analysis pipelines using Make.
-                            </p>
-                            <ul>
-                              <li>Knowledgein Bash to navigate directories, create </li>
-                              <li>Using Git version control </li>
-                              <li>Use of Make and Sankemake as a workflow organisation to 
-                                automate analysis pipelines
-                               </li>
-                            </ul>
-                          </td>
-                        </tr>
-                        <tr >
-                          <td><i class="fa-solid fa-2x fa-database" style="color:#A17A5A;"></i> <br> <br> SQL <i>(Basic)</i></td>
-                          <td>
-                            <p>
-                              Use of SQL to query large administrative databases. I use SQL to efficiently extract the data I need for analysis.
-                            </p>
-                            <ul>
-                              <li>Using SQL to filter, select and join datasets to import
-                                into R for analyses </li>
-                            </ul>
-                          </td>
-                        </tr>
-                    </tbody>
-                </table>
-      
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-      </div>      
-    </section>
-
-    <div class="transition-white-blue" ></div>
-   
-<!-- Reconition carousel -->
-
-<section id="awards">
-
-<div id="carouselExampleIndicators" class="carousel slide" style = 'background-color: #E0ECF1;'>
-  <div><h3 style="padding-top: 2%; text-align: center; font-family: courier; font-size: 2em; color: #808080">Recognition</h3></div>
-  <hr>
-  <div class="row justify-content-center">
-    <div class="col-lg-5 col-md-7">
-      <p class="code-text" style="padding:40px; padding-bottom:0px; text-align: justify; font-family: 'Montserrat', sans-serif">
-        I have recieved a number of significant awards for my work, including my MSc thesis, academic standing and other initiatives.
-        These awards include national, provincial and univeristy-level recognition.
-      </p>
-      </div>
-  </div>
-  <div class="carousel-indicators">
-    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
-    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
-    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="3" aria-label="Slide 4"></button>
-    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="4" aria-label="Slide 5"></button>
-
-  </div>
-  <div class="carousel-inner">
-    <div class="carousel-item active" style="padding-top:0px; padding-bottom:15px">
-      <div class="row justify-content-md-center skills">
-        <!--
-        <div class="features-box col-lg-2">
-          <img src="./Coding/web/personal_site/images/cid-mobile.png" class="d-block w-100 img-thumb" alt="...">
-        </div>
-        -->
-        <div class="features-box col-lg-7">
-
-          <div class="card" >
-            <img src="https://grist.org/wp-content/uploads/2014/03/english_bay_vancouver_bc1.jpg" alt="" class="card-img-top " height="250px">
-            <div class="card-body" >
-              <h5 class="card-title">CIHR CGSM-M</h5>
-              <p class="card-text awards-text">
-                <strong>Award for MSc Thesis (2020)</strong> <br>  
-                The Canadian Institute for Health Researchs's (CIHR) Canada Graduate Scholarships – Master’s (CGSM) program provides financial support to high-calibre scholars.
-                This is a national-level award gieven to 3,000 Master's students researching health. I was a recipient of this award for my 
-                Thesis on brest cancer risk associated with the built environement in post-menopausal women in BC.
-              </p>
-                <a href="https://www.bcgenerationsproject.ca/across-generations-bc-generations-project-newsletter-winter-2020-21/" class="btn btn-info btn-sm" style="color:white">Read More</a>
-              <a href="https://open.library.ubc.ca/soa/cIRcle/collections/ubctheses/24/items/1.0396872" class="btn btn-dark btn-sm" style="color:white">Thesis</a>
-              <!--<a href="" class="btn btn-outline-danger btn-sm"><i class="far fa-heart"></i></a> --> 
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-
-  
-    <div class="carousel-item" style="padding-top:0px; padding-bottom:15px">
-      <div class="row justify-content-md-center skills">
-
-        <div class="features-box col-lg-7">
-
-          <div class="card">
-            <img src="https://images.unsplash.com/photo-1674574124345-02c525664b65?ixlib=rb-4.0.3&ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80" alt="" class="card-img-top" height="250px">
-            <div class="card-body">
-              <h5 class="card-title">Laurel L. Watters Research Fellowship</h5>
-              <p class="card-text awards-text">
-                <strong>Award for MSc Thesis (2020)</strong> <br>
-                This fellowship if awarded to a deserving graduate student or medical resident in the Faculty of Medicine engaged in research into the 
-                causes, treatment, and cure of breast cancer. Mr. Watters passed away in 2002. The awards are made on the recommendation 
-                of the Faculty of Medicine, and in the case of graduate students, in consultation with the Faculty of Graduate and 
-                Postdoctoral Studies.</p>
-              <a href="https://grad-postdoc.med.ubc.ca/laurel-l-watters-research-fellowship/" class="btn btn-info btn-sm">Read More</a>
-              <a href="https://open.library.ubc.ca/soa/cIRcle/collections/ubctheses/24/items/1.0396872" class="btn btn-dark btn-sm" style="color:white">Thesis</a>
-                </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="carousel-item" style="padding-top:0px; padding-bottom:15px">
-      <div class="row justify-content-md-center skills">
-
-        <div class="features-box col-lg-7">
-          <div class="card">
-            <img src="https://images.unsplash.com/photo-1589917030663-849c7fe96c2b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80" alt="" class="card-img-top" height="250px">
-            <div class="card-body">
-              <h5 class="card-title">Dr. Yassi & Team recognised for COVID-19 initiative</h5>
-              <p class="card-text awards-text">
-                Early in the COVID-19 pandemic, Dr. Yassi's team was called upon by Vancouver Coastal Health (VCH) to assist with 
-                occupational health of VCH health workers and to create and manage a unit focused on the occupational needs of physicians.
-                Sean was the primary data analyst on this team.
-              </p>
-              <a href="https://spph.ubc.ca/yassi-covid-19-serving-front-line-workers/" class="btn btn-info btn-sm" style="color:white" >Read More</a>
-              <a href="http://ipac.vch.ca/Documents/COVID-19/Workplace%20Health_POSH/_What%20is%20POSH.PDF" class="btn btn-dark btn-sm" style="color:white" >Description</a>
-                </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-
-        <div class="carousel-item" style="padding-top:0px; padding-bottom:15px">
-          <div class="row justify-content-md-center skills">
-
-            <div class="features-box col-lg-7">
-
-              <div class="card">
-                <img src="images/spph-building.png" alt="" class="card-img-top" height="250px">
-                <div class="card-body">
-                  <h5 class="card-title">Donna Gibson Prize</h5>
-                  <p class="card-text awards-text">
-                    The <strong>Donna Gibson Memorial Prize</strong> are made on recommendation of the
-                    School of Population and Public Health, UBC, to the graduating student with the 
-                    highest grade.
-                  </p>
-                 <a href="https://students.ubc.ca/enrolment/finances/award-search/vancouver/faculty-medicine/school-population-pulblic-health/3276" class="btn btn-info btn-sm" style="color:white" >See more</a>
-                  </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="carousel-item" style="padding-top:0px; padding-bottom:15px">
-          <div class="row justify-content-md-center skills">
-
-            <div class="features-box col-lg-7">
-
-              <div class="card">
-                <img src="https://images.unsplash.com/photo-1501770118606-b1d640526693?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80" alt="" class="card-img-top" height="250px">
-                <div class="card-body">
-                  <h5 class="card-title">George Elliot Fellowship</h5>
-                  <p class="card-text awards-text">
-                    The <strong>George Elliott Fellowship in Community Heath</strong> is made on recommendation of the
-                    School of Population and Public Health to the student who contributed significanlty to the community health 
-                    during their time at UBC. I have the recipient of this award due to my contributions in with the Gloabl
-                    Health initiaive and the COVID-19 healthworker surveillance.
-                  </p>
-                 <a href="https://students.ubc.ca/enrolment/finances/award-search/vancouver/faculty-medicine/school-population-pulblic-health/3288" class="btn btn-dark btn-sm" style="color:white" >See more</a>
-                  </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Previous</span>
-      </button>
-      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Next</span>
-      </button>
-    </div>
-  </div>
-</div>
-
-</section>
-
-<div class="transition-blue-white"></div>
-
-
-<!-- Volunteering tabs -->
-
-<section id="testimonials">
-  <div><h3 style="padding-top: 2%; padding-bottom:0px; text-align: center; color: grey; font-family: courier; font-size: 2em;">Volunteer</h3></div>
-  <hr>
-  <div class="row justify-content-center">
-    <div class="col-lg-6 col-md-7">
-      <p class="code-text" style="padding:40px; padding-bottom:0px; text-align: justify;">
-        Volunteering has always been important part of my life. I have been lucky enough to have been part of two amazing global
-        health projects since the beginning of my Master's program at UBC, and continue to work on these projects today.
-        Both projects are part of UBC's Global Health Initiative, and aim at giving back to local communities, as well 
-        as targeted research to provide a long-lasting impact.
-      </p>
-      </div>
-  </div>
-<div class="row justify-content-md-center skills">
-  <div class="features-box col-lg-7 col-md-8">
-<nav>
-
-    <div class="tab" role="tabpanel" ></div>
-
-      <div class="nav nav-tabs" id="nav-tab" role="tablist" style="text-align: center">
-        <button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true" 
-        style="color: #34728a !important; font-family: 'Montserrat', sans-serif !important; padding-bottom: 20px;">Nigeria Rural Health</button>
-        <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false" 
-        style="color:#34728a !important; font-family: 'Montserrat', sans-serif !important;;  padding-bottom: 20px;">Bhutan Mental Health</button>
-      </div>
-    </nav>
-    <div class="tab-content" id="nav-tabContent">
-      <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
-        <h4 style="padding: 20px">Oasis Community Health Foundation</h4> 
-        <div class="row justify-content-center skills" style="padding: 20px;">
-          <div class="features-box col-lg-4 col-md-3 "><h6 style="text-align: left; padding:10px"> Project Lead for Chronic Disease Management Unit </h6> 
-            <br> 
-            <h6 style="text-align: left; padding:20px">2021 - present</h6>
-          </div>
-          <div class="features-box col-lg-8 col-md-7" style="text-align: justify; font-family:sans-serif; font-weight: lighter;"> 
-            <p style="padding-right: 10px; padding-left: 10px">OCHF is a small non-for-profit foundation which has been running a Malaria control and prevention program in rural 
-            Nigeria and has recently opened a new free rural health centre, in area with no nearby hospital. My role has been in 
-            helping organise the opening of the health centre and setting up the chronic disease division by creating clinical 
-            guidelines for providers and educational tools for patients. For more information on 
-            on OCHF, visit our <a href="https://ruralhealth.ca/">website</a>.</p> 
-          </div>
-        </div>
-        <iframe class="hidden-mobile" width="560" height="315" src="https://www.youtube.com/embed/GkwjbGX1_r0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-        <iframe class="hidden-desktop" width="300" height="168.7" src="https://www.youtube.com/embed/GkwjbGX1_r0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-          
-    </div>
-      <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
-        <h4 style="padding: 20px;">UBC Bhutan Mental Health Project</h4> 
-        <div class="row justify-content-center skills" style="padding: 20px;">
-          <div class="features-box col-lg-4 col-md-3">
-            <h6 style="text-align: left; padding:10px">Research Study <br> Team Member </h6> 
-            <br> 
-            <h6 style="text-align: left; padding:10px">2021 - present</h6></div>
-          <div class="features-box col-lg-8 col-md-7" style="  text-align: justify; font-family:sans-serif; font-weight: lighter;"> 
-            <p style="padding-right: 10px; padding-left: 10px">The goal of this initiative is to better understand the dynamics of youth mental health in Bhutan. This project in 
-            in partnership with a medical school in Bhutan and UBC department of Medicine. My role has been in been in writing the 
-            research protocol, applying for research ethics and funding as well as in the creation of a research survey for students 
-            in Bhutan to better understand mental health needs. I have also been leading the analysis of the research project. For more information on 
-            this project, visit our <a href="https://ubcbhutanhealth.wordpress.com/">website</a>.</p> 
-            
-          </div>
-          <img class="" src="images/bhutan.png" width="50%" alt="lady-profile" style="width: 60%" width = 60%>
-        </div>  
-  </div>
-</div>
-</div>
-</div>
-</section>
-
-
-    <!-- Delte from here-->
-    
-
-  <!-- #Contact me -->
-<div class="transition-white-brown"></div>
-
-<div id="contactform" class = "contact-form">
-  <header style=" font-family: 'Montserrat', sans-serif; margin: 0px; font-family: 'Courier New', Courier, monospace !important">
-    Contact me.
-  </header>
-
-  <form id="form" class="topBefore" action="https://formspree.io/f/moqzwwnz" method="POST" style = "margin-bottom: 0px;">
-    <input id="name" type="text" name="Name" placeholder="NAME">
-    <input id="email" type="text"  name="E-mail" placeholder="E-MAIL">
-    <input id="name" type="text" name="Subject" placeholder="SUBJECT">
-    <textarea id="message" type="text" name="Message" placeholder="MESSAGE"></textarea>
-    <input id="submit" type="submit" value="SEND">
-  </form>
-</div>
-
-<div class="transition-brown-blue"></div>
-        
-
-<section id="footer" style = "background: #E0ECF1">
-<!-- <section id="footer" style = "background: linear-gradient(white, 35%, #E0ECF1 100%)"> --> 
-  &nbsp;
-  
-  <p> 
-    <br>
-    <br> 
-  </p>
-  <p style="text-align: center; "><a class="footer" href="" style = " font-weight: normal !important; size: 1.5rem;">Sean Harrigan</a></p>
-  <!--  <p style="text-align: center;"><span style="color: #808080;"><a style="color: #808080; font-weight: normal !important; " href="mailto: sean.pat.harrigan@gmail.com">sean.pat.harrigan@gmail.com</a></span></p> --> 
-
-  <!-- Add icon library -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
-  <!-- Add font awesome icons -->
-  <p style="text-align: center;">
-      <a href="https://orcid.org/0000-0001-6021-7402" class="footer fa fa-2x fa-brands fa-orcid" style="padding-right: 1%; padding-left: 1%"></a>
-      <a href="https://www.linkedin.com/in/sean-harrigan-8a281614a/" class="footer fa fa-2x fa-linkedin" style="padding-right: 1%; padding-left: 1%"></a>
-      <a href="https://github.com/seanharrigan" class="footer fa fa-2x fa-github" style="padding-right: 1%; padding-left: 1%"></a>
-  </p>
-
-  &nbsp;
-
-</section>
-
-
-
 </body>
-
-
-
 </html>
-
-
