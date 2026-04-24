@@ -255,6 +255,10 @@ img { max-width: 100%; height: auto; }
   margin: 0 auto 2rem;
 }
 
+.hero-tagline-mobile {
+  display: none;
+}
+
 @keyframes typewriter {
   to { width: 100%; }
 }
@@ -1604,6 +1608,12 @@ img { max-width: 100%; height: auto; }
 /* ===== Responsive ===== */
 @media (max-width: 768px) {
   :root { --section-padding: 60px 0; }
+
+  .hero-tagline:not(.hero-tagline-mobile) { display: none; }
+  .hero-tagline-mobile {
+    display: inline-block;
+    animation: typewriter 2.5s steps(47) 0.5s forwards, blink-caret 0.6s step-end infinite alternate;
+  }
 
   .navbar { padding: 12px 20px; }
   .navbar.scrolled { padding: 8px 20px; }
