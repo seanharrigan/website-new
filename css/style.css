@@ -649,7 +649,8 @@ img { max-width: 100%; height: auto; }
   transition: all var(--transition);
 }
 
-.edu-item:hover .edu-dot {
+.edu-item:hover .edu-dot,
+.edu-item.edu-active .edu-dot {
   background: var(--blue-primary);
   transform: scale(1.4);
   box-shadow: 0 0 0 6px rgba(147,191,207,0.25);
@@ -667,7 +668,8 @@ img { max-width: 100%; height: auto; }
   transition: all var(--transition);
 }
 
-.edu-item:hover .edu-year {
+.edu-item:hover .edu-year,
+.edu-item.edu-active .edu-year {
   background: var(--blue-primary);
   color: var(--white);
   transform: scale(1.05);
@@ -706,7 +708,7 @@ img { max-width: 100%; height: auto; }
   z-index: 2;
 }
 
-.edu-item:hover .edu-desc {
+.edu-item.edu-active .edu-desc {
   max-height: 200px;
   opacity: 1;
   margin-top: 6px;

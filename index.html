@@ -890,7 +890,15 @@
     <h2 class="section-title reveal">Contact me</h2>
     <hr class="section-divider">
 
-    <form class="contact-form reveal" id="contactForm" action="https://formspree.io/f/moqzwwnz" method="POST">
+    <div class="contact-toggle reveal" id="contactToggle" style="text-align: center; cursor: pointer;" onclick="toggleContactForm()">
+      <i class="fa-solid fa-envelope" style="font-size: 2.5rem; color: var(--tan); transition: all 0.3s ease; display: inline-block;"></i>
+      <p style="font-size: 0.85rem; color: var(--gray-mid); margin-top: 8px;">Tap to send a message</p>
+    </div>
+
+    <form class="contact-form reveal" id="contactForm" action="https://formspree.io/f/moqzwwnz" method="POST" style="display: none;">
+      <div style="text-align: right; margin-bottom: 8px;">
+        <button type="button" onclick="toggleContactForm()" style="background: none; border: none; color: var(--gray-light); font-size: 1.2rem; cursor: pointer; padding: 4px;"><i class="fa-solid fa-xmark"></i></button>
+      </div>
       <input type="text" name="Name" placeholder="Name" required>
       <input type="email" name="E-mail" placeholder="Email" required pattern="[a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,}">
       <input type="text" name="Subject" placeholder="Subject">
@@ -1074,6 +1082,20 @@ backToTop.addEventListener('click', () => {
   window.scrollTo({ top: 0, behavior: 'smooth' });
 });
 
+// Contact form toggle
+function toggleContactForm() {
+  const form = document.getElementById('contactForm');
+  const toggle = document.getElementById('contactToggle');
+  if (form.style.display === 'none') {
+    form.style.display = 'block';
+    form.style.animation = 'fadeIn 0.4s ease';
+    toggle.style.display = 'none';
+  } else {
+    form.style.display = 'none';
+    toggle.style.display = 'block';
+  }
+}
+
 // 5. Contact form with live validation
 const contactForm = document.getElementById('contactForm');
 const emailInput = contactForm.querySelector('input[type="email"]');
@@ -1200,14 +1222,23 @@ document.getElementById('r0Slider')?.addEventListener('input', runSIR);
 document.getElementById('gammaSlider')?.addEventListener('input', runSIR);
 document.querySelector('[data-tab="tab-epi"]')?.addEventListener('click', () => setTimeout(runSIR, 100));
 
-// Education: tap to toggle on mobile, only one open at a time
-if (window.innerWidth <= 768) {
-  const eduItems = document.querySelectorAll('.edu-item');
-  // Set most recent (last in DOM = first visually when reversed) as active
-  if (eduItems.length) eduItems[eduItems.length - 1].classList.add('edu-active');
+// Education: hover/tap to show description, one at a time
+const eduItems = document.querySelectorAll('.edu-item');
 
+if (window.innerWidth <= 768) {
+  // Mobile: most recent (last in DOM = first visually reversed) starts active
+  if (eduItems.length) eduItems[eduItems.length - 1].classList.add('edu-active');
   eduItems.forEach(item => {
     item.addEventListener('click', () => {
+      eduItems.forEach(i => i.classList.remove('edu-active'));
+      item.classList.add('edu-active');
+    });
+  });
+} else {
+  // Desktop: MSc (2nd item) starts active, hover switches
+  if (eduItems.length >= 2) eduItems[1].classList.add('edu-active');
+  eduItems.forEach(item => {
+    item.addEventListener('mouseenter', () => {
       eduItems.forEach(i => i.classList.remove('edu-active'));
       item.classList.add('edu-active');
     });
