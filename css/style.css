@@ -1705,6 +1705,20 @@ img { max-width: 100%; height: auto; }
   .award-slide-img { width: 100%; min-height: 180px; }
   .award-slide-body { padding: 20px; }
 
+  /* Dot-only carousel nav on mobile */
+  .awards-tab {
+    font-size: 0;
+    padding: 6px 4px;
+    gap: 0;
+  }
+  .awards-tab::before {
+    width: 10px;
+    height: 10px;
+  }
+  .awards-tab.active::before {
+    transform: scale(1.4);
+  }
+
   .volunteer-grid { grid-template-columns: 1fr; }
 }
 
