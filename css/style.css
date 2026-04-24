@@ -1729,7 +1729,7 @@ img { max-width: 100%; height: auto; }
 @media (max-width: 768px) {
   :root { --section-padding: 60px 0; }
 
-  /* White shield behind notch */
+  /* Frosted shield behind notch */
   .mobile-nav-bg {
     display: block;
     position: fixed;
@@ -1737,7 +1737,9 @@ img { max-width: 100%; height: auto; }
     left: 0;
     right: 0;
     height: calc(48px + env(safe-area-inset-top, 0px));
-    background: white;
+    background: rgba(255,255,255,0.85);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
     z-index: 999;
     pointer-events: none;
     opacity: 0;
@@ -1775,7 +1777,9 @@ img { max-width: 100%; height: auto; }
     right: 0;
     bottom: auto;
     height: auto;
-    background: white;
+    background: rgba(255,255,255,0.85);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
     flex-direction: row;
     padding: 8px 16px;
     padding-top: calc(4px + env(safe-area-inset-top, 0px));
