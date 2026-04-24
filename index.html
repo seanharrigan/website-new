@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <meta property="og:type" content="website">
   <meta property="og:title" content="Sean Harrigan — Biostatistics & Epidemiology"/>
   <meta property="og:image" content="./images/og-share.png">
@@ -776,6 +776,7 @@
       </div>
       <div class="awards-nav">
         <button class="awards-nav-btn" id="awardPrev"><i class="fa-solid fa-chevron-left"></i></button>
+        <div class="awards-dots-mobile" id="awardsDotsMobile"></div>
         <div class="awards-tabs" id="awardsTabs">
           <button class="awards-tab active" data-slide="0">CIHR CGSM-M</button>
           <button class="awards-tab" data-slide="1">Watters Fellowship</button>
@@ -1180,14 +1181,26 @@ document.querySelectorAll('.volunteer-card').forEach(card => {
 (function() {
   const slider = document.getElementById('awardsSlider');
   const tabs = document.querySelectorAll('.awards-tab');
+  const dotsContainer = document.getElementById('awardsDotsMobile');
   if (!slider || !tabs.length) return;
   const slides = slider.querySelectorAll('.award-slide');
   let current = 0;
+
+  // Create mobile dots
+  slides.forEach((_, i) => {
+    const dot = document.createElement('button');
+    dot.className = 'awards-dot-m' + (i === 0 ? ' active' : '');
+    dot.addEventListener('click', () => goTo(i));
+    dotsContainer.appendChild(dot);
+  });
+
+  const mobileDots = dotsContainer.querySelectorAll('.awards-dot-m');
 
   function goTo(n) {
     current = (n + slides.length) % slides.length;
     slider.style.transform = `translateX(-${current * 100}%)`;
     tabs.forEach((t, i) => t.classList.toggle('active', i === current));
+    mobileDots.forEach((d, i) => d.classList.toggle('active', i === current));
   }
 
   tabs.forEach(tab => {
