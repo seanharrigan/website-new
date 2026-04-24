@@ -1218,21 +1218,21 @@ document.querySelector('[data-tab="tab-epi"]')?.addEventListener('click', () => 
   });
 
   const dots = dotsC.querySelectorAll('.abstracts-dot');
-  const obs = new IntersectionObserver((entries) => {
-    let maxRatio = 0, maxIdx = 0;
-    entries.forEach(entry => {
-      const idx = Array.from(cards).indexOf(entry.target);
-      if (entry.intersectionRatio > maxRatio) {
-        maxRatio = entry.intersectionRatio;
-        maxIdx = idx;
-      }
-    });
-    if (maxRatio > 0.3) {
-      dots.forEach((d, i) => d.classList.toggle('active', i === maxIdx));
-    }
-  }, { root: scroll, threshold: [0, 0.3, 0.5, 0.7, 1] });
 
-  cards.forEach(c => obs.observe(c));
+  function updateDots() {
+    const scrollCenter = scroll.scrollLeft + scroll.clientWidth / 2;
+    let closest = 0, minDist = Infinity;
+    cards.forEach((card, i) => {
+      const cardCenter = card.offsetLeft + card.offsetWidth / 2;
+      const dist = Math.abs(scrollCenter - cardCenter);
+      if (dist < minDist) { minDist = dist; closest = i; }
+    });
+    dots.forEach((d, i) => d.classList.toggle('active', i === closest));
+    cards.forEach((c, i) => c.classList.toggle('in-view', i === closest));
+  }
+
+  scroll.addEventListener('scroll', updateDots);
+  updateDots();
 })();
 
 // Education: tap to toggle on mobile, only one open at a time
