@@ -1631,6 +1631,7 @@ img { max-width: 100%; height: auto; }
   gap: 24px;
   justify-content: center;
   margin-top: 1.5rem;
+  padding-bottom: 3rem;
 }
 
 .contact-socials a {
