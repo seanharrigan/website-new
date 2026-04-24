@@ -1086,13 +1086,28 @@ backToTop.addEventListener('click', () => {
 function toggleContactForm() {
   const form = document.getElementById('contactForm');
   const toggle = document.getElementById('contactToggle');
-  if (form.style.display === 'none') {
-    form.style.display = 'block';
-    form.style.animation = 'fadeIn 0.4s ease';
-    toggle.style.display = 'none';
+  if (form.style.display === 'none' || !form.style.display) {
+    toggle.style.opacity = '0';
+    toggle.style.transition = 'opacity 0.3s ease';
+    setTimeout(() => {
+      toggle.style.display = 'none';
+      form.style.display = 'block';
+      form.style.opacity = '0';
+      form.style.transition = 'opacity 0.4s ease';
+      requestAnimationFrame(() => { form.style.opacity = '1'; });
+    }, 300);
   } else {
-    form.style.display = 'none';
-    toggle.style.display = 'block';
+    form.style.opacity = '0';
+    form.style.transition = 'opacity 0.3s ease';
+    setTimeout(() => {
+      form.style.display = 'none';
+      toggle.style.display = 'block';
+      toggle.style.opacity = '0';
+      requestAnimationFrame(() => {
+        toggle.style.transition = 'opacity 0.4s ease';
+        toggle.style.opacity = '1';
+      });
+    }, 300);
   }
 }
 

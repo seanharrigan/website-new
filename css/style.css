@@ -1685,7 +1685,7 @@ img { max-width: 100%; height: auto; }
 
   .nav-links {
     position: fixed !important;
-    top: env(safe-area-inset-top, 0px);
+    top: 0;
     left: 0;
     right: 0;
     bottom: auto;
@@ -1693,6 +1693,7 @@ img { max-width: 100%; height: auto; }
     background: white;
     flex-direction: row;
     padding: 10px 16px;
+    padding-top: calc(10px + env(safe-area-inset-top, 0px));
     gap: 0;
     box-shadow: 0 2px 12px rgba(0,0,0,0.08);
     z-index: 1000;
@@ -1700,19 +1701,8 @@ img { max-width: 100%; height: auto; }
     overflow-y: hidden;
     -webkit-overflow-scrolling: touch;
     scroll-snap-type: x mandatory;
-    transform: translateY(-100%);
+    transform: translateY(-150%);
     transition: transform 0.4s ease;
-  }
-
-  .nav-links::before {
-    content: '';
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: env(safe-area-inset-top, 0px);
-    background: white;
-    z-index: 1001;
   }
 
   .nav-links.scrolled-visible {
