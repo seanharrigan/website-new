@@ -1255,8 +1255,31 @@ img { max-width: 100%; height: auto; }
 
 /* ===== Volunteer ===== */
 .volunteer {
-  padding: var(--section-padding);
-  background: var(--white);
+  padding: 0;
+  background: #f5f7f8;
+}
+
+.volunteer-header {
+  background: linear-gradient(135deg, var(--blue-primary), var(--blue-dark));
+  padding: 60px 0 40px;
+  text-align: center;
+}
+
+.volunteer-header .section-title {
+  color: var(--white);
+}
+
+.volunteer-header .section-divider {
+  background: rgba(255,255,255,0.4);
+}
+
+.volunteer-header .volunteer-intro {
+  color: rgba(255,255,255,0.85);
+  margin-bottom: 0;
+}
+
+.volunteer-body {
+  padding: 40px 0 80px;
 }
 
 .volunteer-intro {
