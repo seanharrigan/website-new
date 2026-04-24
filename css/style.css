@@ -1683,25 +1683,25 @@ img { max-width: 100%; height: auto; }
 
   .nav-links {
     position: fixed !important;
-    bottom: 0;
+    top: 0;
     left: 0;
     right: 0;
-    top: auto;
+    bottom: auto;
     height: auto;
     background: rgba(255,255,255,0.95);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
     flex-direction: row;
     padding: 10px 16px;
-    padding-bottom: calc(10px + env(safe-area-inset-bottom, 0px));
+    padding-top: calc(10px + env(safe-area-inset-top, 0px));
     gap: 0;
-    box-shadow: 0 -2px 12px rgba(0,0,0,0.08);
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
     z-index: 1000;
     overflow-x: auto;
     overflow-y: hidden;
     -webkit-overflow-scrolling: touch;
     scroll-snap-type: x mandatory;
-    transform: translateY(100%);
+    transform: translateY(-100%);
     transition: transform 0.4s ease;
   }
 
@@ -1735,7 +1735,7 @@ img { max-width: 100%; height: auto; }
   }
 
   /* Add bottom padding to body so content isn't hidden behind bottom nav */
-  body { padding-bottom: calc(52px + env(safe-area-inset-bottom, 0px)); }
+  body { padding-bottom: 0; }
 
   .about-grid {
     grid-template-columns: 1fr;
