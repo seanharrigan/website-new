@@ -1660,9 +1660,20 @@ img { max-width: 100%; height: auto; }
 @media (max-width: 768px) {
   :root { --section-padding: 60px 0; }
 
-  /* Hide top navbar completely on mobile */
-  .navbar { display: none !important; }
+  /* Hide top navbar bar but keep it in DOM so nav-links can escape */
+  .navbar {
+    position: static;
+    background: none !important;
+    box-shadow: none !important;
+    backdrop-filter: none !important;
+    padding: 0 !important;
+    height: 0;
+    overflow: visible;
+    transform: none !important;
+    opacity: 1 !important;
+  }
 
+  .navbar-brand { display: none; }
   .menu-toggle { display: none; }
 
   /* Tagline: short version on mobile */
@@ -1670,7 +1681,7 @@ img { max-width: 100%; height: auto; }
   .hero-tagline-mobile { display: inline-block !important; }
 
   .nav-links {
-    position: fixed;
+    position: fixed !important;
     bottom: 0;
     left: 0;
     right: 0;
@@ -1906,15 +1917,17 @@ img { max-width: 100%; height: auto; }
     margin-bottom: 16px;
   }
 
-  .vol-tab-role {
-    font-size: 0.8rem;
+  .vol-tab-title {
+    font-size: 1.05rem;
+    margin-bottom: 2px;
+    color: var(--gray-dark);
+  }
+
+  .vol-tab-meta {
+    font-size: 0.82rem;
     color: var(--blue-dark);
     font-weight: 600;
-    display: inline-block;
-    background: var(--blue-light);
-    padding: 3px 10px;
-    border-radius: 20px;
-    margin-bottom: 12px;
+    margin-bottom: 14px;
   }
 
   .vol-tab-panel iframe {
