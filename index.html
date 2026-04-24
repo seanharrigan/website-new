@@ -1101,8 +1101,8 @@ function toggleContactForm() {
     formWrap.classList.add('open');
     wrapper.classList.add('form-open');
     setTimeout(() => {
-      document.getElementById('contact').scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }, 100);
+      document.getElementById('contactFormWrap').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }, 350);
   }
 }
 
