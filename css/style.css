@@ -388,6 +388,8 @@ img { max-width: 100%; height: auto; }
   border-radius: var(--radius);
   background: var(--blue-light);
   transition: all var(--transition);
+  position: relative;
+  overflow: hidden;
 }
 
 .skill-card:hover {
@@ -413,14 +415,19 @@ img { max-width: 100%; height: auto; }
 }
 
 .skill-card-cta {
-  display: block;
-  margin-top: 12px;
-  font-size: 0.82rem;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 8px;
+  font-size: 0.78rem;
   font-weight: 600;
-  color: var(--tan);
+  color: var(--white);
+  background: var(--tan);
   opacity: 0;
-  transform: translateY(6px);
+  transform: translateY(100%);
   transition: all 0.3s ease;
+  border-radius: 0 0 var(--radius) var(--radius);
 }
 
 .skill-card:hover .skill-card-cta {
