@@ -1840,7 +1840,7 @@ img { max-width: 100%; height: auto; }
   .timeline::before { left: 16px; }
   .timeline-item { padding-left: 48px; }
   .timeline-dot { left: 8px; }
-  .timeline-header { flex-direction: row; }
+  .timeline-header { flex-direction: row; align-items: flex-start; }
   .timeline-summary { white-space: normal; }
 
   .timeline-header-text h4 { font-size: 0.95rem; }
