@@ -99,7 +99,9 @@
           and various global health initiatives. I have a passion for health research, epidemiology, statistical methods, and
           reproducible data science — particularly in data analysis, visualisation, and automation.
         </p>
-        <a class="btn btn-secondary-custom" href="#" onclick="openCvModal(event)">See my CV</a>
+        <div style="text-align: center; margin-top: 1rem;">
+          <a class="btn btn-secondary-custom" href="#" onclick="openCvModal(event)">See my CV</a>
+        </div>
       </div>
     </div>
 
@@ -613,6 +615,7 @@
             <span><span style="display:inline-block;width:10px;height:10px;background:#c4532e;border-radius:50%;margin-right:4px;vertical-align:middle;"></span> Infected: <strong id="countInfected">0</strong></span>
             <span><span style="display:inline-block;width:10px;height:10px;background:#A17A5A;border-radius:50%;margin-right:4px;vertical-align:middle;"></span> Recovered: <strong id="countRecovered">0</strong></span>
             <span><span style="display:inline-block;width:10px;height:10px;background:#6bbf59;border-radius:50%;margin-right:4px;vertical-align:middle;"></span> Vaccinated: <strong id="countVaccinated">0</strong></span>
+            <span><span style="display:inline-block;width:10px;height:10px;border-radius:50%;border:2.5px solid #d4a0e0;margin-right:4px;vertical-align:middle;"></span> Masked</span>
           </div>
           <canvas id="contagionCanvas" style="width: 100%; border-radius: 12px; background: #f8f9fa; border: 1px solid #e8e8e8;"></canvas>
           <p style="font-size: 0.78rem; color: var(--gray-light); text-align: center; margin-top: 10px;">
@@ -673,27 +676,23 @@
         <div class="lang-list">
           <div class="lang-row">
             <div class="lang-icon"><i class="fa-solid fa-robot" style="color: var(--tan);"></i></div>
-            <div class="lang-name"><h5>Claude</h5><span>Daily Use</span></div>
-            <div class="lang-bar"><div class="lang-bar-fill" style="width: 90%"></div></div>
-            <div class="lang-desc">Code generation, debugging, scientific writing, data analysis, and building full applications (including this website)</div>
+            <div class="lang-name"><h5>Claude</h5></div>
+            <div class="lang-desc">My primary AI tool for code generation, debugging, scientific writing, and data analysis. Used to enhance and iterate on projects like this website.</div>
           </div>
           <div class="lang-row">
             <div class="lang-icon"><i class="fa-solid fa-brain" style="color: var(--tan);"></i></div>
-            <div class="lang-name"><h5>ChatGPT</h5><span>Regular Use</span></div>
-            <div class="lang-bar"><div class="lang-bar-fill" style="width: 75%"></div></div>
-            <div class="lang-desc">Research assistance, brainstorming, data interpretation, and document drafting</div>
+            <div class="lang-name"><h5>ChatGPT</h5></div>
+            <div class="lang-desc">Used regularly for research assistance, brainstorming, interpreting complex data, and drafting documents and manuscripts.</div>
           </div>
           <div class="lang-row">
             <div class="lang-icon"><i class="fa-solid fa-wand-magic-sparkles" style="color: var(--tan);"></i></div>
-            <div class="lang-name"><h5>AI-Assisted Dev</h5><span>Integrated</span></div>
-            <div class="lang-bar"><div class="lang-bar-fill" style="width: 80%"></div></div>
-            <div class="lang-desc">Using AI copilots for R and Python development, automated code review, and workflow optimisation</div>
+            <div class="lang-name"><h5>AI-Assisted Dev</h5></div>
+            <div class="lang-desc">AI copilots integrated into my R and Python workflows for code completion, automated review, and optimising analytical pipelines.</div>
           </div>
           <div class="lang-row">
             <div class="lang-icon"><i class="fa-solid fa-microchip" style="color: var(--tan);"></i></div>
-            <div class="lang-name"><h5>App Building</h5><span>Growing</span></div>
-            <div class="lang-bar"><div class="lang-bar-fill" style="width: 60%"></div></div>
-            <div class="lang-desc">Leveraging AI to rapidly prototype web apps, dashboards, and interactive tools for research and data communication</div>
+            <div class="lang-name"><h5>App Building</h5></div>
+            <div class="lang-desc">Leveraging AI to rapidly prototype web apps, interactive dashboards, and data communication tools — turning ideas into working products quickly.</div>
           </div>
         </div>
       </div>
@@ -714,70 +713,71 @@
       These include national, provincial, and university-level recognition.
     </p>
 
-    <!-- Top row: 3 cards -->
-    <div class="awards-grid-top reveal">
-      <div class="award-card">
-        <img src="https://grist.org/wp-content/uploads/2014/03/english_bay_vancouver_bc1.jpg" alt="Vancouver">
-        <div class="award-card-body">
-          <h5>CIHR CGSM-M</h5>
-          <span class="award-year">Award for MSc Thesis, 2020</span>
-          <p>The Canadian Institutes of Health Research's Canada Graduate Scholarships — Master's program provides financial support to high-calibre scholars. A national-level award given to 3,000 Master's students researching health.</p>
-          <div class="award-card-buttons">
-            <a href="https://www.bcgenerationsproject.ca/across-generations-bc-generations-project-newsletter-winter-2020-21/" class="btn btn-primary-custom">Read More</a>
-            <a href="https://open.library.ubc.ca/soa/cIRcle/collections/ubctheses/24/items/1.0396872" class="btn btn-secondary-custom">Thesis</a>
+    <div class="awards-carousel reveal">
+      <div class="awards-track">
+        <div class="awards-slider" id="awardsSlider">
+          <div class="award-slide">
+            <img class="award-slide-img" src="https://grist.org/wp-content/uploads/2014/03/english_bay_vancouver_bc1.jpg" alt="Vancouver">
+            <div class="award-slide-body">
+              <h5>CIHR CGSM-M</h5>
+              <span class="award-year">Award for MSc Thesis, 2020</span>
+              <p>The Canadian Institutes of Health Research's Canada Graduate Scholarships — Master's program provides financial support to high-calibre scholars. A national-level award given to 3,000 Master's students researching health.</p>
+              <div class="award-card-buttons">
+                <a href="https://www.bcgenerationsproject.ca/across-generations-bc-generations-project-newsletter-winter-2020-21/" class="btn btn-primary-custom">Read More</a>
+                <a href="https://open.library.ubc.ca/soa/cIRcle/collections/ubctheses/24/items/1.0396872" class="btn btn-secondary-custom">Thesis</a>
+              </div>
+            </div>
+          </div>
+          <div class="award-slide">
+            <img class="award-slide-img" src="https://images.unsplash.com/photo-1674574124345-02c525664b65?auto=format&fit=crop&w=870&q=80" alt="Research">
+            <div class="award-slide-body">
+              <h5>Laurel L. Watters Research Fellowship</h5>
+              <span class="award-year">Award for MSc Thesis, 2020</span>
+              <p>Awarded to a deserving graduate student in the Faculty of Medicine engaged in research into the causes, treatment, and cure of breast cancer.</p>
+              <div class="award-card-buttons">
+                <a href="https://grad-postdoc.med.ubc.ca/laurel-l-watters-research-fellowship/" class="btn btn-primary-custom">Read More</a>
+              </div>
+            </div>
+          </div>
+          <div class="award-slide">
+            <img class="award-slide-img" src="https://images.unsplash.com/photo-1589917030663-849c7fe96c2b?auto=format&fit=crop&w=870&q=80" alt="Healthcare">
+            <div class="award-slide-body">
+              <h5>Dr. Yassi COVID-19 Initiative</h5>
+              <span class="award-year">Team Recognition</span>
+              <p>Early in the pandemic, Dr. Yassi's team was called upon by VCH to assist with occupational health of health workers. Sean was the primary data analyst on this team.</p>
+              <div class="award-card-buttons">
+                <a href="https://spph.ubc.ca/yassi-covid-19-serving-front-line-workers/" class="btn btn-primary-custom">Read More</a>
+              </div>
+            </div>
+          </div>
+          <div class="award-slide">
+            <img class="award-slide-img" src="images/spph-building.png" alt="SPPH Building">
+            <div class="award-slide-body">
+              <h5>Donna Gibson Prize</h5>
+              <span class="award-year">Graduating Student Award</span>
+              <p>Awarded on recommendation of the School of Population and Public Health, UBC, to the graduating student with the highest academic standing.</p>
+              <div class="award-card-buttons">
+                <a href="https://students.ubc.ca/enrolment/finances/award-search/vancouver/faculty-medicine/school-population-pulblic-health/3276" class="btn btn-primary-custom">See more</a>
+              </div>
+            </div>
+          </div>
+          <div class="award-slide">
+            <img class="award-slide-img" src="https://images.unsplash.com/photo-1501770118606-b1d640526693?auto=format&fit=crop&w=870&q=80" alt="Community">
+            <div class="award-slide-body">
+              <h5>George Elliott Fellowship</h5>
+              <span class="award-year">Community Health Award</span>
+              <p>The George Elliott Fellowship in Community Health is awarded to the student who contributed significantly to community health during their time at UBC.</p>
+              <div class="award-card-buttons">
+                <a href="https://students.ubc.ca/enrolment/finances/award-search/vancouver/faculty-medicine/school-population-pulblic-health/3288" class="btn btn-primary-custom">See more</a>
+              </div>
+            </div>
           </div>
         </div>
       </div>
-
-      <div class="award-card">
-        <img src="https://images.unsplash.com/photo-1674574124345-02c525664b65?auto=format&fit=crop&w=870&q=80" alt="Research">
-        <div class="award-card-body">
-          <h5>Laurel L. Watters Research Fellowship</h5>
-          <span class="award-year">Award for MSc Thesis, 2020</span>
-          <p>Awarded to a deserving graduate student in the Faculty of Medicine engaged in research into the causes, treatment, and cure of breast cancer.</p>
-          <div class="award-card-buttons">
-            <a href="https://grad-postdoc.med.ubc.ca/laurel-l-watters-research-fellowship/" class="btn btn-primary-custom">Read More</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="award-card">
-        <img src="https://images.unsplash.com/photo-1589917030663-849c7fe96c2b?auto=format&fit=crop&w=870&q=80" alt="Healthcare">
-        <div class="award-card-body">
-          <h5>Dr. Yassi COVID-19 Initiative</h5>
-          <span class="award-year">Team Recognition</span>
-          <p>Early in the pandemic, Dr. Yassi's team was called upon by VCH to assist with occupational health of health workers. Sean was the primary data analyst on this team.</p>
-          <div class="award-card-buttons">
-            <a href="https://spph.ubc.ca/yassi-covid-19-serving-front-line-workers/" class="btn btn-primary-custom">Read More</a>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Bottom row: 2 cards, centered -->
-    <div class="awards-grid-bottom reveal">
-      <div class="award-card">
-        <img src="images/spph-building.png" alt="SPPH Building">
-        <div class="award-card-body">
-          <h5>Donna Gibson Prize</h5>
-          <span class="award-year">Graduating Student Award</span>
-          <p>Awarded on recommendation of the School of Population and Public Health, UBC, to the graduating student with the highest academic standing.</p>
-          <div class="award-card-buttons">
-            <a href="https://students.ubc.ca/enrolment/finances/award-search/vancouver/faculty-medicine/school-population-pulblic-health/3276" class="btn btn-primary-custom">See more</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="award-card">
-        <img src="https://images.unsplash.com/photo-1501770118606-b1d640526693?auto=format&fit=crop&w=870&q=80" alt="Community">
-        <div class="award-card-body">
-          <h5>George Elliott Fellowship</h5>
-          <span class="award-year">Community Health Award</span>
-          <p>The George Elliott Fellowship in Community Health is awarded to the student who contributed significantly to community health during their time at UBC.</p>
-          <div class="award-card-buttons">
-            <a href="https://students.ubc.ca/enrolment/finances/award-search/vancouver/faculty-medicine/school-population-pulblic-health/3288" class="btn btn-primary-custom">See more</a>
-          </div>
-        </div>
+      <div class="awards-nav">
+        <button class="awards-nav-btn" id="awardPrev"><i class="fa-solid fa-chevron-left"></i></button>
+        <div class="awards-dots" id="awardsDots"></div>
+        <button class="awards-nav-btn" id="awardNext"><i class="fa-solid fa-chevron-right"></i></button>
       </div>
     </div>
   </div>
@@ -818,7 +818,7 @@
           and leading the analysis.
           <a href="https://ubcbhutanhealth.wordpress.com/">Learn more</a>.
         </p>
-        <img src="images/bhutan.png" alt="Bhutan project" style="width: 100%; border-radius: 8px; object-fit: cover; max-height: 250px;">
+        <img src="images/bhutan.png" alt="Bhutan project" style="width: 100%; aspect-ratio: 16/9; border-radius: 8px; object-fit: cover;">
       </div>
     </div>
   </div>
@@ -1097,12 +1097,38 @@ document.getElementById('r0Slider')?.addEventListener('input', runSIR);
 document.getElementById('gammaSlider')?.addEventListener('input', runSIR);
 document.querySelector('[data-tab="tab-epi"]')?.addEventListener('click', () => setTimeout(runSIR, 100));
 
+// === Awards Carousel ===
+(function() {
+  const slider = document.getElementById('awardsSlider');
+  const dotsContainer = document.getElementById('awardsDots');
+  if (!slider || !dotsContainer) return;
+  const slides = slider.querySelectorAll('.award-slide');
+  let current = 0;
+
+  // Create dots
+  slides.forEach((_, i) => {
+    const dot = document.createElement('button');
+    dot.className = 'awards-dot' + (i === 0 ? ' active' : '');
+    dot.addEventListener('click', () => goTo(i));
+    dotsContainer.appendChild(dot);
+  });
+
+  function goTo(n) {
+    current = (n + slides.length) % slides.length;
+    slider.style.transform = `translateX(-${current * 100}%)`;
+    dotsContainer.querySelectorAll('.awards-dot').forEach((d, i) => d.classList.toggle('active', i === current));
+  }
+
+  document.getElementById('awardPrev').addEventListener('click', () => goTo(current - 1));
+  document.getElementById('awardNext').addEventListener('click', () => goTo(current + 1));
+})();
+
 // === Contagion Simulation ===
 (function() {
   const canvas = document.getElementById('contagionCanvas');
   if (!canvas) return;
   const c = canvas.getContext('2d');
-  const POP = 200, RADIUS = 4, INFECT_DIST = 14, INFECT_PROB = 0.03, RECOVER_TIME = 300;
+  const POP = 200, RADIUS = 4, INFECT_DIST = 16, INFECT_PROB = 0.06, RECOVER_TIME = 500, INITIAL_INFECTED = 5;
   let people = [], animId = null, running = false;
 
   function resize() {
@@ -1128,9 +1154,45 @@ document.querySelector('[data-tab="tab-epi"]')?.addEventListener('click', () => 
         timer: 0
       });
     }
-    // Infect one
-    const h = people.find(p => p.state === 'healthy');
-    if (h) { h.state = 'infected'; h.timer = 0; }
+    let infected = 0;
+    for (const p of people) {
+      if (infected >= INITIAL_INFECTED) break;
+      if (p.state === 'healthy') { p.state = 'infected'; p.timer = 0; infected++; }
+    }
+    updateCounts();
+    draw();
+  }
+
+  function applyInterventions() {
+    const vaxRate = parseInt(document.getElementById('vaxSlider').value) / 100;
+    const maskRate = parseInt(document.getElementById('maskSlider').value) / 100;
+    // Shuffle indices so assignment is random
+    const indices = people.map((_, i) => i).sort(() => Math.random() - 0.5);
+    const vaxCount = Math.round(POP * vaxRate);
+    const maskCount = Math.round(POP * maskRate);
+
+    people.forEach(p => {
+      // Only reset healthy people — don't touch infected/recovered
+      if (p.state === 'vaccinated') p.state = 'healthy';
+      p.mask = false;
+    });
+
+    let vaxxed = 0;
+    for (const i of indices) {
+      if (vaxxed >= vaxCount) break;
+      if (people[i].state === 'healthy') {
+        people[i].state = 'vaccinated';
+        vaxxed++;
+      }
+    }
+
+    let masked = 0;
+    for (const i of indices) {
+      if (masked >= maskCount) break;
+      people[i].mask = true;
+      masked++;
+    }
+
     updateCounts();
     draw();
   }
@@ -1159,9 +1221,9 @@ document.querySelector('[data-tab="tab-epi"]')?.addEventListener('click', () => 
       c.fill();
       if (p.mask) {
         c.beginPath();
-        c.arc(p.x, p.y, RADIUS + 3, 0, Math.PI * 2);
-        c.strokeStyle = 'rgba(90,143,163,0.4)';
-        c.lineWidth = 1.5;
+        c.arc(p.x, p.y, RADIUS + 4, 0, Math.PI * 2);
+        c.strokeStyle = '#d4a0e0';
+        c.lineWidth = 2.5;
         c.stroke();
       }
     });
@@ -1204,29 +1266,39 @@ document.querySelector('[data-tab="tab-epi"]')?.addEventListener('click', () => 
       animId = requestAnimationFrame(step);
     } else {
       running = false;
+      document.getElementById('contagionStart').innerHTML = '<i class="fa-solid fa-play"></i> Start';
     }
   }
 
   document.getElementById('contagionStart')?.addEventListener('click', () => {
-    if (running) return;
+    const btn = document.getElementById('contagionStart');
+    if (running) {
+      running = false;
+      if (animId) cancelAnimationFrame(animId);
+      btn.innerHTML = '<i class="fa-solid fa-play"></i> Start';
+      return;
+    }
     if (!people.some(p => p.state === 'infected')) init();
     running = true;
+    btn.innerHTML = '<i class="fa-solid fa-pause"></i> Pause';
     step();
   });
 
   document.getElementById('contagionReset')?.addEventListener('click', () => {
     running = false;
     if (animId) cancelAnimationFrame(animId);
+    document.getElementById('contagionStart').innerHTML = '<i class="fa-solid fa-play"></i> Start';
     init();
   });
 
   document.getElementById('vaxSlider')?.addEventListener('input', (e) => {
     document.getElementById('vaxValue').textContent = e.target.value + '%';
-    if (!running) init();
+    if (!running && people.length) applyInterventions();
   });
 
   document.getElementById('maskSlider')?.addEventListener('input', (e) => {
     document.getElementById('maskValue').textContent = e.target.value + '%';
+    if (!running && people.length) applyInterventions();
   });
 
   document.querySelector('[data-tab="tab-contagion"]')?.addEventListener('click', () => {
