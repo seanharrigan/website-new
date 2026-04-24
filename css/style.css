@@ -1377,7 +1377,7 @@ img { max-width: 100%; height: auto; }
 /* ===== Contact ===== */
 .contact {
   padding: var(--section-padding);
-  background: var(--brown-bg);
+  background: var(--blue-light);
 }
 
 .contact-form {
