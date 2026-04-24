@@ -124,7 +124,6 @@
     </div>
   </div>
 </section>
-
 <div class="section-transition white-to-blue"></div>
 
 <!-- ===== Experience ===== -->
@@ -307,7 +306,6 @@
     </div>
   </div>
 </section>
-
 <div class="section-transition blue-to-white"></div>
 
 <!-- ===== Education ===== -->
@@ -370,7 +368,6 @@
     </div>
   </div>
 </section>
-
 <div class="section-transition white-to-blue"></div>
 
 <!-- ===== Publications ===== -->
@@ -475,7 +472,6 @@
     </p>
   </div>
 </section>
-
 <div class="section-transition blue-to-white"></div>
 
 <!-- ===== Code / Example Work ===== -->
@@ -699,7 +695,6 @@
     </div>
   </div>
 </section>
-
 <div class="section-transition white-to-blue"></div>
 
 <!-- ===== Recognition ===== -->
@@ -776,13 +771,18 @@
       </div>
       <div class="awards-nav">
         <button class="awards-nav-btn" id="awardPrev"><i class="fa-solid fa-chevron-left"></i></button>
-        <div class="awards-dots" id="awardsDots"></div>
+        <div class="awards-tabs" id="awardsTabs">
+          <button class="awards-tab active" data-slide="0">CIHR CGSM-M</button>
+          <button class="awards-tab" data-slide="1">Watters Fellowship</button>
+          <button class="awards-tab" data-slide="2">COVID-19 Team</button>
+          <button class="awards-tab" data-slide="3">Donna Gibson</button>
+          <button class="awards-tab" data-slide="4">Elliott Fellowship</button>
+        </div>
         <button class="awards-nav-btn" id="awardNext"><i class="fa-solid fa-chevron-right"></i></button>
       </div>
     </div>
   </div>
 </section>
-
 <div class="section-transition blue-to-white"></div>
 
 <!-- ===== Volunteer ===== -->
@@ -823,7 +823,6 @@
     </div>
   </div>
 </section>
-
 <div class="section-transition white-to-brown"></div>
 
 <!-- ===== Contact ===== -->
@@ -851,6 +850,7 @@
 <button class="back-to-top" id="backToTop" aria-label="Back to top">
   <i class="fa-solid fa-arrow-up"></i>
 </button>
+
 
 <div class="section-transition brown-to-blue"></div>
 
@@ -1100,24 +1100,20 @@ document.querySelector('[data-tab="tab-epi"]')?.addEventListener('click', () => 
 // === Awards Carousel ===
 (function() {
   const slider = document.getElementById('awardsSlider');
-  const dotsContainer = document.getElementById('awardsDots');
-  if (!slider || !dotsContainer) return;
+  const tabs = document.querySelectorAll('.awards-tab');
+  if (!slider || !tabs.length) return;
   const slides = slider.querySelectorAll('.award-slide');
   let current = 0;
-
-  // Create dots
-  slides.forEach((_, i) => {
-    const dot = document.createElement('button');
-    dot.className = 'awards-dot' + (i === 0 ? ' active' : '');
-    dot.addEventListener('click', () => goTo(i));
-    dotsContainer.appendChild(dot);
-  });
 
   function goTo(n) {
     current = (n + slides.length) % slides.length;
     slider.style.transform = `translateX(-${current * 100}%)`;
-    dotsContainer.querySelectorAll('.awards-dot').forEach((d, i) => d.classList.toggle('active', i === current));
+    tabs.forEach((t, i) => t.classList.toggle('active', i === current));
   }
+
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => goTo(parseInt(tab.dataset.slide)));
+  });
 
   document.getElementById('awardPrev').addEventListener('click', () => goTo(current - 1));
   document.getElementById('awardNext').addEventListener('click', () => goTo(current + 1));
