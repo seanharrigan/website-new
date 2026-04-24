@@ -469,7 +469,9 @@
     </div>
 
     <p style="text-align: center; padding-top: 2rem;">
-      <a href="https://orcid.org/0000-0001-6021-7402" style="color: var(--gray-light); font-size: 2.5rem;" aria-label="ORCiD">
+      <a href="https://orcid.org/0000-0001-6021-7402" style="color: var(--gray-light); font-size: 2.5rem; transition: all 0.3s ease; display: inline-block;" aria-label="ORCiD"
+        onmouseover="this.style.color='#a6ce39'; this.style.transform='translateY(-3px) scale(1.15)';"
+        onmouseout="this.style.color='var(--gray-light)'; this.style.transform='none';">
         <i class="fa-brands fa-orcid"></i>
       </a>
     </p>
@@ -1010,10 +1012,46 @@ backToTop.addEventListener('click', () => {
   window.scrollTo({ top: 0, behavior: 'smooth' });
 });
 
-// 5. Contact form success
+// 5. Contact form with live validation
 const contactForm = document.getElementById('contactForm');
+const emailInput = contactForm.querySelector('input[type="email"]');
+const emailRegex = /^[a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,}$/;
+
+// Validate on blur (leaving the field)
+emailInput.addEventListener('blur', function() {
+  if (this.value && !emailRegex.test(this.value)) {
+    this.classList.add('invalid');
+  } else {
+    this.classList.remove('invalid');
+  }
+});
+
+// Remove invalid state when typing
+emailInput.addEventListener('input', function() {
+  this.classList.remove('invalid');
+});
+
 contactForm.addEventListener('submit', function(e) {
   e.preventDefault();
+
+  // Check all required fields
+  let valid = true;
+  this.querySelectorAll('[required]').forEach(field => {
+    field.classList.remove('invalid');
+    if (!field.value.trim()) {
+      field.classList.add('invalid');
+      valid = false;
+    }
+  });
+
+  // Check email format
+  if (emailInput.value && !emailRegex.test(emailInput.value)) {
+    emailInput.classList.add('invalid');
+    valid = false;
+  }
+
+  if (!valid) return;
+
   const data = new FormData(this);
   fetch(this.action, { method: 'POST', body: data, headers: { 'Accept': 'application/json' } })
     .then(response => {
