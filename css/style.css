@@ -1687,7 +1687,7 @@ img { max-width: 100%; height: auto; }
     right: 0;
     bottom: auto;
     height: auto;
-    background: rgba(255,255,255,0.95);
+    background: rgba(255,255,255,1);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
     flex-direction: row;
