@@ -1209,7 +1209,7 @@ img { max-width: 100%; height: auto; }
   padding: 6px 12px;
   font-size: 0.72rem;
   font-family: var(--font-body);
-  color: var(--gray-light);
+  color: var(--gray-mid);
   cursor: pointer;
   transition: all var(--transition);
   white-space: nowrap;
@@ -1223,7 +1223,7 @@ img { max-width: 100%; height: auto; }
   width: 8px;
   height: 8px;
   border-radius: 50%;
-  background: rgba(255,255,255,0.4);
+  background: #b0b0b0;
   flex-shrink: 0;
   transition: all var(--transition);
 }
