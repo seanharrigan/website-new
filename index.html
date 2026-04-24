@@ -1101,7 +1101,7 @@ function toggleContactForm() {
     formWrap.classList.add('open');
     wrapper.classList.add('form-open');
     setTimeout(() => {
-      document.getElementById('contactFormWrap').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      document.querySelector('.contact-socials').scrollIntoView({ behavior: 'smooth', block: 'end' });
     }, 350);
   }
 }
